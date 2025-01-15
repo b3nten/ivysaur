@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "./watch.sh -c 'node build src && node server'",
-    "build": "node build src types"
+    "build": "tsc && node build types"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",

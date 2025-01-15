@@ -6,7 +6,13 @@ const SSR_NODE = 1,
   EMPTY_ARR = [],
   SVG_NS = "http://www.w3.org/2000/svg";
 
+/**
+* @type { any }
+*/
 let event_delegate = function (event) {
+  /**
+  * @type { any }
+  */
   this._vevents[event.type](event);
 };
 
@@ -268,18 +274,18 @@ let create_element = (tag, props, children = EMPTY_ARR) =>
   create_vnode(tag, props, Array.isArray(children) ? children : [children]);
 
 /**
-* @type { import("./types.js").TextFunction }
+* @type { import("./types").TextFunction }
 */
 let text = (value, node) =>
   create_vnode(value, EMPTY_OBJ, EMPTY_ARR, TEXT_NODE, node);
 
 /**
-* @type { import("./types.js").Fragment }
+* @type { import("./types").Fragment }
 */
 let Fragment = (_, children) => children.flat();
 
 /**
-* @type { import("./types.js").HFunction }
+* @type { import("./types").HFunction }
 */
 let h = (type, props, ...children) =>
   typeof type === "function"
@@ -295,7 +301,7 @@ let h = (type, props, ...children) =>
 let render_ctx = EMPTY_OBJ;
 
 /**
-* @type { import("./types.js").RenderFunction }
+* @type { import("./types").RenderFunction }
 */
 let render = (vdom, node, ctx = {}) => (
   (render.ctx = ctx),

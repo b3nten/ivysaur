@@ -199,7 +199,7 @@ class Ivysaur extends HTMLElement {
 
   /**
   * @description The render method for the element. Must return a VNode from h() or compiled JSX.
-  * @returns { import("./types.js").VNode }
+  * @returns { import("./types").VNode }
   */
   render() {
     IS_DEV && console.warn("No render method defined for", this.constructor.name);
@@ -270,7 +270,7 @@ class Ivysaur extends HTMLElement {
 
   /**
   * @protected
-  * @type { ReturnType<import("./reactive.js").effectScope> }
+  * @type { ReturnType<import("./reactive").effectScope> }
   */
   _rootEffectScope;
 
@@ -282,13 +282,13 @@ class Ivysaur extends HTMLElement {
 }
 
 /**
-* @type { import("./types.js").CSSFunction }
+* @type { import("./types").CSSFunction }
 */
 let css = String.raw
 
 /**
 * @description Decorator to make a class accessor reactive.
-* @type { import("./types.js").StateDecorator }
+* @type { import("./types").StateDecorator }
 */
 function state() {
   return function (_, { kind, name }) {
@@ -315,7 +315,7 @@ let default_attr_converter = val => val;
 
 /**
 * @description Decorator to make a class accessor reactive.
-* @type { import("./types.js").AttributeDecorator }
+* @type { import("./types").AttributeDecorator }
 */
 function attribute(overriddenName, options = {}) {
   return function (value, { kind, name, metadata }) {

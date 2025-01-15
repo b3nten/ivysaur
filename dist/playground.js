@@ -1,243 +1,1924 @@
-var ye=Object.create;var pt=Object.defineProperty;var Se=Object.getOwnPropertyDescriptor;var qt=(t,e)=>(e=Symbol[t])?e:Symbol.for("Symbol."+t),P=t=>{throw TypeError(t)};var Te=(t,e,r)=>e in t?pt(t,e,{enumerable:!0,configurable:!0,writable:!0,value:r}):
-t[e]=r;var Bt=(t,e)=>pt(t,"name",{value:e,configurable:!0});var Xt=t=>[,,,ye(t?.[qt("metadata")]??null)],Jt=["class","method","getter","sett\
-er","accessor","field","value","get","set"],W=t=>t!==void 0&&typeof t!="function"?
-P("Function expected"):t,Ae=(t,e,r,s,n)=>({kind:Jt[t],name:e,metadata:s,addInitializer:i=>r.
-_?P("Already initialized"):n.push(W(i||null))}),dt=(t,e)=>Te(e,qt("metadata"),t[3]),
-gt=(t,e,r,s)=>{for(var n=0,i=t[e>>1],o=i&&i.length;n<o;n++)e&1?i[n].call(r):s=i[n].
-call(r,s);return s},Zt=(t,e,r,s,n,i)=>{var o,a,l,u,g,c=e&7,f=!!(e&8),h=!!(e&16),
-_=c>3?t.length+1:c?f?1:2:0,S=Jt[c+5],A=c>3&&(t[_-1]=[]),m=t[_]||(t[_]=[]),v=c&&(!h&&
-!f&&(n=n.prototype),c<5&&(c>3||!h)&&Se(c<4?n:{get[r](){return $t(this,i)},set[r](b){
-return Ht(this,i,b)}},r));c?h&&c<4&&Bt(i,(c>2?"set ":c>1?"get ":"")+r):Bt(n,r);for(var x=s.
-length-1;x>=0;x--)u=Ae(c,r,l={},t[3],m),c&&(u.static=f,u.private=h,g=u.access={has:h?
-b=>Ne(n,b):b=>r in b},c^3&&(g.get=h?b=>(c^1?$t:Oe)(b,n,c^4?i:v.get):b=>b[r]),c>2&&
-(g.set=h?(b,ht)=>Ht(b,n,ht,c^4?i:v.set):(b,ht)=>b[r]=ht)),a=(0,s[x])(c?c<4?h?i:v[S]:
-c>4?void 0:{get:v.get,set:v.set}:n,u),l._=1,c^4||a===void 0?W(a)&&(c>4?A.unshift(
-a):c?h?i=a:v[S]=a:n=a):typeof a!="object"||a===null?P("Object expected"):(W(o=a.
-get)&&(v.get=o),W(o=a.set)&&(v.set=o),W(o=a.init)&&A.unshift(o));return c||dt(t,
-n),v&&pt(n,r,v),h?c^4?i:v:n};var _t=(t,e,r)=>e.has(t)||P("Cannot "+r),Ne=(t,e)=>Object(e)!==e?P('Cannot use t\
-he "in" operator on this value'):t.has(e),$t=(t,e,r)=>(_t(t,e,"read from private\
- field"),r?r.call(t):e.get(t)),Qt=(t,e,r)=>e.has(t)?P("Cannot add the same priva\
-te member more than once"):e instanceof WeakSet?e.add(t):e.set(t,r),Ht=(t,e,r,s)=>(_t(
-t,e,"write to private field"),s?s.call(t,r):e.set(t,r),r),Oe=(t,e,r)=>(_t(t,e,"a\
-ccess private method"),r);function mt(t){let e=Object.create(null);for(let r of t.split(","))e[r]=1;return r=>r in
-e}var vt=Object.assign;var Re=Object.prototype.hasOwnProperty,K=(t,e)=>Re.call(t,e),C=Array.isArray,z=t=>Vt(
-t)==="[object Map]";var xe=t=>typeof t=="string",F=t=>typeof t=="symbol",Y=t=>t!==null&&typeof t=="o\
-bject";var we=Object.prototype.toString,Vt=t=>we.call(t),Kt=t=>Vt(t).slice(8,-1);var tt=t=>xe(t)&&t!=="NaN"&&t[0]!=="-"&&""+parseInt(t,10)===t;var et=t=>{let e=Object.create(null);return r=>e[r]||(e[r]=t(r))},De=/-(\w)/g,or=et(
-t=>t.replace(De,(e,r)=>r?r.toUpperCase():"")),Ce=/\B([A-Z])/g,ar=et(t=>t.replace(
-Ce,"-$1").toLowerCase()),Me=et(t=>t.charAt(0).toUpperCase()+t.slice(1)),cr=et(t=>t?
-`on${Me(t)}`:""),j=(t,e)=>!Object.is(t,e);var Le="itemscope,allowfullscreen,formnovalidate,ismap,nomodule,novalidate,reado\
-nly";var lr=mt(Le+",async,autofocus,autoplay,controls,default,defer,disabled,hidden,i\
-nert,loop,open,required,reversed,scoped,seamless,checked,muted,multiple,selected");var T,St=class{constructor(e=!1){this.detached=e,this._active=!0,this.effects=[],
-this.cleanups=[],this._isPaused=!1,this.parent=T,!e&&T&&(this.index=(T.scopes||(T.
-scopes=[])).push(this)-1)}get active(){return this._active}pause(){if(this._active){
-this._isPaused=!0;let e,r;if(this.scopes)for(e=0,r=this.scopes.length;e<r;e++)this.
-scopes[e].pause();for(e=0,r=this.effects.length;e<r;e++)this.effects[e].pause()}}resume(){
-if(this._active&&this._isPaused){this._isPaused=!1;let e,r;if(this.scopes)for(e=
-0,r=this.scopes.length;e<r;e++)this.scopes[e].resume();for(e=0,r=this.effects.length;e<
-r;e++)this.effects[e].resume()}}run(e){if(this._active){let r=T;try{return T=this,
-e()}finally{T=r}}}on(){T=this}off(){T=this.parent}stop(e){if(this._active){this.
-_active=!1;let r,s;for(r=0,s=this.effects.length;r<s;r++)this.effects[r].stop();
-for(this.effects.length=0,r=0,s=this.cleanups.length;r<s;r++)this.cleanups[r]();
-if(this.cleanups.length=0,this.scopes){for(r=0,s=this.scopes.length;r<s;r++)this.
-scopes[r].stop(!0);this.scopes.length=0}if(!this.detached&&this.parent&&!e){let n=this.
-parent.scopes.pop();n&&n!==this&&(this.parent.scopes[this.index]=n,n.index=this.
-index)}this.parent=void 0}}};function Mt(t){return new St(t)}var p;var Et=new WeakSet,st=class{constructor(e){this.fn=e,this.deps=void 0,this.depsTail=
-void 0,this.flags=5,this.next=void 0,this.cleanup=void 0,this.scheduler=void 0,T&&
-T.active&&T.effects.push(this)}pause(){this.flags|=64}resume(){this.flags&64&&(this.
-flags&=-65,Et.has(this)&&(Et.delete(this),this.trigger()))}notify(){this.flags&2&&
-!(this.flags&32)||this.flags&8||Ie(this)}run(){if(!(this.flags&1))return this.fn();
-this.flags|=2,te(this),ne(this);let e=p,r=N;p=this,N=!0;try{return this.fn()}finally{
-se(this),p=e,N=r,this.flags&=-3}}stop(){if(this.flags&1){for(let e=this.deps;e;e=
-e.nextDep)kt(e);this.deps=this.depsTail=void 0,te(this),this.onStop&&this.onStop(),
-this.flags&=-2}}trigger(){this.flags&64?Et.add(this):this.scheduler?this.scheduler():
-this.runIfDirty()}runIfDirty(){Tt(this)&&this.run()}get dirty(){return Tt(this)}},
-re=0,$,H;function Ie(t,e=!1){if(t.flags|=8,e){t.next=H,H=t;return}t.next=$,$=t}function Lt(){
-re++}function It(){if(--re>0)return;if(H){let e=H;for(H=void 0;e;){let r=e.next;
-e.next=void 0,e.flags&=-9,e=r}}let t;for(;$;){let e=$;for($=void 0;e;){let r=e.next;
-if(e.next=void 0,e.flags&=-9,e.flags&1)try{e.trigger()}catch(s){t||(t=s)}e=r}}if(t)
-throw t}function ne(t){for(let e=t.deps;e;e=e.nextDep)e.version=-1,e.prevActiveLink=
-e.dep.activeLink,e.dep.activeLink=e}function se(t){let e,r=t.depsTail,s=r;for(;s;){
-let n=s.prevDep;s.version===-1?(s===r&&(r=n),kt(s),Pe(s)):e=s,s.dep.activeLink=s.
-prevActiveLink,s.prevActiveLink=void 0,s=n}t.deps=e,t.depsTail=r}function Tt(t){
-for(let e=t.deps;e;e=e.nextDep)if(e.dep.version!==e.version||e.dep.computed&&(ke(
-e.dep.computed)||e.dep.version!==e.version))return!0;return!!t._dirty}function ke(t){
-if(t.flags&4&&!(t.flags&16)||(t.flags&=-17,t.globalVersion===it))return;t.globalVersion=
-it;let e=t.dep;if(t.flags|=2,e.version>0&&!t.isSSR&&t.deps&&!Tt(t)){t.flags&=-3;
-return}let r=p,s=N;p=t,N=!0;try{ne(t);let n=t.fn(t._value);(e.version===0||j(n,t.
-_value))&&(t._value=n,e.version++)}catch(n){throw e.version++,n}finally{p=r,N=s,
-se(t),t.flags&=-3}}function kt(t,e=!1){let{dep:r,prevSub:s,nextSub:n}=t;if(s&&(s.
-nextSub=n,t.prevSub=void 0),n&&(n.prevSub=s,t.nextSub=void 0),r.subs===t&&(r.subs=
-s,!s&&r.computed)){r.computed.flags&=-5;for(let i=r.computed.deps;i;i=i.nextDep)
-kt(i,!0)}!e&&!--r.sc&&r.map&&r.map.delete(r.key)}function Pe(t){let{prevDep:e,nextDep:r}=t;
-e&&(e.nextDep=r,t.prevDep=void 0),r&&(r.prevDep=e,t.nextDep=void 0)}function Z(t,e){
-t.effect instanceof st&&(t=t.effect.fn);let r=new st(t);e&&vt(r,e);try{r.run()}catch(n){
-throw r.stop(),n}let s=r.run.bind(r);return s.effect=r,s}var N=!0,ie=[];function Fe(){ie.push(N),N=!1}function je(){let t=ie.pop();N=t===void 0?!0:t}function te(t){let{cleanup:e}=t;if(t.cleanup=void 0,e){let r=p;p=void 0;try{e()}finally{
-p=r}}}var it=0,At=class{constructor(e,r){this.sub=e,this.dep=r,this.version=r.version,
-this.nextDep=this.prevDep=this.nextSub=this.prevSub=this.prevActiveLink=void 0}},
-Nt=class{constructor(e){this.computed=e,this.version=0,this.activeLink=void 0,this.
-subs=void 0,this.map=void 0,this.key=void 0,this.sc=0}track(e){if(!p||!N||p===this.
-computed)return;let r=this.activeLink;if(r===void 0||r.sub!==p)r=this.activeLink=
-new At(p,this),p.deps?(r.prevDep=p.depsTail,p.depsTail.nextDep=r,p.depsTail=r):p.
-deps=p.depsTail=r,oe(r);else if(r.version===-1&&(r.version=this.version,r.nextDep)){
-let s=r.nextDep;s.prevDep=r.prevDep,r.prevDep&&(r.prevDep.nextDep=s),r.prevDep=p.
-depsTail,r.nextDep=void 0,p.depsTail.nextDep=r,p.depsTail=r,p.deps===r&&(p.deps=
-s)}return r}trigger(e){this.version++,it++,this.notify(e)}notify(e){Lt();try{for(let r=this.
-subs;r;r=r.prevSub)r.sub.notify()&&r.sub.dep.notify()}finally{It()}}};function oe(t){
-if(t.dep.sc++,t.sub.flags&4){let e=t.dep.computed;if(e&&!t.dep.subs){e.flags|=20;
-for(let s=e.deps;s;s=s.nextDep)oe(s)}let r=t.dep.subs;r!==t&&(t.prevSub=r,r&&(r.
-nextSub=t)),t.dep.subs=t}}var Ot=new WeakMap,M=Symbol(""),Rt=Symbol(""),X=Symbol(
-"");function E(t,e,r){if(N&&p){let s=Ot.get(t);s||Ot.set(t,s=new Map);let n=s.get(
-r);n||(s.set(r,n=new Nt),n.map=s,n.key=r),n.track()}}function w(t,e,r,s,n,i){let o=Ot.
-get(t);if(!o){it++;return}let a=l=>{l&&l.trigger()};if(Lt(),e==="clear")o.forEach(
-a);else{let l=C(t),u=l&&tt(r);if(l&&r==="length"){let g=Number(s);o.forEach((c,f)=>{
-(f==="length"||f===X||!F(f)&&f>=g)&&a(c)})}else switch((r!==void 0||o.has(void 0))&&
-a(o.get(r)),u&&a(o.get(X)),e){case"add":l?u&&a(o.get("length")):(a(o.get(M)),z(t)&&
-a(o.get(Rt)));break;case"delete":l||(a(o.get(M)),z(t)&&a(o.get(Rt)));break;case"\
-set":z(t)&&a(o.get(M));break}}It()}function U(t){let e=d(t);return e===t?e:(E(e,"iterate",X),L(t)?e:e.map(y))}function Pt(t){
-return E(t=d(t),"iterate",X),t}var Ue={__proto__:null,[Symbol.iterator](){return bt(
-this,Symbol.iterator,y)},concat(...t){return U(this).concat(...t.map(e=>C(e)?U(e):
-e))},entries(){return bt(this,"entries",t=>(t[1]=y(t[1]),t))},every(t,e){return O(
-this,"every",t,e,void 0,arguments)},filter(t,e){return O(this,"filter",t,e,r=>r.
-map(y),arguments)},find(t,e){return O(this,"find",t,e,y,arguments)},findIndex(t,e){
-return O(this,"findIndex",t,e,void 0,arguments)},findLast(t,e){return O(this,"fi\
-ndLast",t,e,y,arguments)},findLastIndex(t,e){return O(this,"findLastIndex",t,e,void 0,
-arguments)},forEach(t,e){return O(this,"forEach",t,e,void 0,arguments)},includes(...t){
-return yt(this,"includes",t)},indexOf(...t){return yt(this,"indexOf",t)},join(t){
-return U(this).join(t)},lastIndexOf(...t){return yt(this,"lastIndexOf",t)},map(t,e){
-return O(this,"map",t,e,void 0,arguments)},pop(){return B(this,"pop")},push(...t){
-return B(this,"push",t)},reduce(t,...e){return ee(this,"reduce",t,e)},reduceRight(t,...e){
-return ee(this,"reduceRight",t,e)},shift(){return B(this,"shift")},some(t,e){return O(
-this,"some",t,e,void 0,arguments)},splice(...t){return B(this,"splice",t)},toReversed(){
-return U(this).toReversed()},toSorted(t){return U(this).toSorted(t)},toSpliced(...t){
-return U(this).toSpliced(...t)},unshift(...t){return B(this,"unshift",t)},values(){
-return bt(this,"values",y)}};function bt(t,e,r){let s=Pt(t),n=s[e]();return s!==
-t&&!L(t)&&(n._next=n.next,n.next=()=>{let i=n._next();return i.value&&(i.value=r(
-i.value)),i}),n}var Ge=Array.prototype;function O(t,e,r,s,n,i){let o=Pt(t),a=o!==
-t&&!L(t),l=o[e];if(l!==Ge[e]){let c=l.apply(t,i);return a?y(c):c}let u=r;o!==t&&
-(a?u=function(c,f){return r.call(this,y(c),f,t)}:r.length>2&&(u=function(c,f){return r.
-call(this,c,f,t)}));let g=l.call(o,u,s);return a&&n?n(g):g}function ee(t,e,r,s){
-let n=Pt(t),i=r;return n!==t&&(L(t)?r.length>3&&(i=function(o,a,l){return r.call(
-this,o,a,l,t)}):i=function(o,a,l){return r.call(this,o,y(a),l,t)}),n[e](i,...s)}
-function yt(t,e,r){let s=d(t);E(s,"iterate",X);let n=s[e](...r);return(n===-1||n===
-!1)&&Ke(r[0])?(r[0]=d(r[0]),s[e](...r)):n}function B(t,e,r=[]){Fe(),Lt();let s=d(
-t)[e].apply(t,r);return It(),je(),s}var We=mt("__proto__,__v_isRef,__isVue"),ae=new Set(
-Object.getOwnPropertyNames(Symbol).filter(t=>t!=="arguments"&&t!=="caller").map(
-t=>Symbol[t]).filter(F));function ze(t){F(t)||(t=String(t));let e=d(this);return E(
-e,"has",t),e.hasOwnProperty(t)}var ot=class{constructor(e=!1,r=!1){this._isReadonly=
-e,this._isShallow=r}get(e,r,s){if(r==="__v_skip")return e.__v_skip;let n=this._isReadonly,
-i=this._isShallow;if(r==="__v_isReactive")return!n;if(r==="__v_isReadonly")return n;
-if(r==="__v_isShallow")return i;if(r==="__v_raw")return s===(n?i?Ze:fe:i?Je:le).
-get(e)||Object.getPrototypeOf(e)===Object.getPrototypeOf(s)?e:void 0;let o=C(e);
-if(!n){let l;if(o&&(l=Ue[r]))return l;if(r==="hasOwnProperty")return ze}let a=Reflect.
-get(e,r,q(e)?e:s);return(F(r)?ae.has(r):We(r))||(n||E(e,"get",r),i)?a:q(a)?o&&tt(
-r)?a:a.value:Y(a)?n?ue(a):I(a):a}},xt=class extends ot{constructor(e=!1){super(!1,
-e)}set(e,r,s,n){let i=e[r];if(!this._isShallow){let l=J(i);if(!L(s)&&!J(s)&&(i=d(
-i),s=d(s)),!C(e)&&q(i)&&!q(s))return l?!1:(i.value=s,!0)}let o=C(e)&&tt(r)?Number(
-r)<e.length:K(e,r),a=Reflect.set(e,r,s,q(e)?e:n);return e===d(n)&&(o?j(s,i)&&w(e,
-"set",r,s,i):w(e,"add",r,s)),a}deleteProperty(e,r){let s=K(e,r),n=e[r],i=Reflect.
-deleteProperty(e,r);return i&&s&&w(e,"delete",r,void 0,n),i}has(e,r){let s=Reflect.
-has(e,r);return(!F(r)||!ae.has(r))&&E(e,"has",r),s}ownKeys(e){return E(e,"iterat\
-e",C(e)?"length":M),Reflect.ownKeys(e)}},wt=class extends ot{constructor(e=!1){super(
-!0,e)}set(e,r){return!0}deleteProperty(e,r){return!0}},Ye=new xt,Be=new wt;var Dt=t=>t,rt=t=>Reflect.getPrototypeOf(t);function $e(t,e,r){return function(...s){
-let n=this.__v_raw,i=d(n),o=z(i),a=t==="entries"||t===Symbol.iterator&&o,l=t==="\
-keys"&&o,u=n[t](...s),g=r?Dt:e?Ct:y;return!e&&E(i,"iterate",l?Rt:M),{next(){let{
-value:c,done:f}=u.next();return f?{value:c,done:f}:{value:a?[g(c[0]),g(c[1])]:g(
-c),done:f}},[Symbol.iterator](){return this}}}}function nt(t){return function(...e){
-return t==="delete"?!1:t==="clear"?void 0:this}}function He(t,e){let r={get(n){let i=this.
-__v_raw,o=d(i),a=d(n);t||(j(n,a)&&E(o,"get",n),E(o,"get",a));let{has:l}=rt(o),u=e?
-Dt:t?Ct:y;if(l.call(o,n))return u(i.get(n));if(l.call(o,a))return u(i.get(a));i!==
-o&&i.get(n)},get size(){let n=this.__v_raw;return!t&&E(d(n),"iterate",M),Reflect.
-get(n,"size",n)},has(n){let i=this.__v_raw,o=d(i),a=d(n);return t||(j(n,a)&&E(o,
-"has",n),E(o,"has",a)),n===a?i.has(n):i.has(n)||i.has(a)},forEach(n,i){let o=this,
-a=o.__v_raw,l=d(a),u=e?Dt:t?Ct:y;return!t&&E(l,"iterate",M),a.forEach((g,c)=>n.call(
-i,u(g),u(c),o))}};return vt(r,t?{add:nt("add"),set:nt("set"),delete:nt("delete"),
-clear:nt("clear")}:{add(n){!e&&!L(n)&&!J(n)&&(n=d(n));let i=d(this);return rt(i).
-has.call(i,n)||(i.add(n),w(i,"add",n,n)),this},set(n,i){!e&&!L(i)&&!J(i)&&(i=d(i));
-let o=d(this),{has:a,get:l}=rt(o),u=a.call(o,n);u||(n=d(n),u=a.call(o,n));let g=l.
-call(o,n);return o.set(n,i),u?j(i,g)&&w(o,"set",n,i,g):w(o,"add",n,i),this},delete(n){
-let i=d(this),{has:o,get:a}=rt(i),l=o.call(i,n);l||(n=d(n),l=o.call(i,n));let u=a?
-a.call(i,n):void 0,g=i.delete(n);return l&&w(i,"delete",n,void 0,u),g},clear(){let n=d(
-this),i=n.size!==0,o=void 0,a=n.clear();return i&&w(n,"clear",void 0,void 0,o),a}}),
-["keys","values","entries",Symbol.iterator].forEach(n=>{r[n]=$e(n,t,e)}),r}function ce(t,e){
-let r=He(t,e);return(s,n,i)=>n==="__v_isReactive"?!t:n==="__v_isReadonly"?t:n===
-"__v_raw"?s:Reflect.get(K(r,n)&&n in s?r:s,n,i)}var qe={get:ce(!1,!1)};var Xe={get:ce(!0,!1)};var le=new WeakMap,Je=new WeakMap,fe=new WeakMap,Ze=new WeakMap;function Qe(t){switch(t){case"\
-Object":case"Array":return 1;case"Map":case"Set":case"WeakMap":case"WeakSet":return 2;default:
-return 0}}function Ve(t){return t.__v_skip||!Object.isExtensible(t)?0:Qe(Kt(t))}
-function I(t){return J(t)?t:he(t,!1,Ye,qe,le)}function ue(t){return he(t,!0,Be,Xe,fe)}function he(t,e,r,s,n){if(!Y(t)||t.__v_raw&&!(e&&t.__v_isReactive))return t;let i=n.
-get(t);if(i)return i;let o=Ve(t);if(o===0)return t;let a=new Proxy(t,o===2?s:r);
-return n.set(t,a),a}function J(t){return!!(t&&t.__v_isReadonly)}function L(t){return!!(t&&t.__v_isShallow)}
-function Ke(t){return t?!!t.__v_raw:!1}function d(t){let e=t&&t.__v_raw;return e?
-d(e):t}var y=t=>Y(t)?I(t):t,Ct=t=>Y(t)?ue(t):t;function q(t){return t?t.__v_isRef===!0:
-!1}var de=1,Q=3,ct={},jt=[],tr="http://www.w3.org/2000/svg",pe=function(t){this._vevents[t.
-type](t)},D=t=>t==null?t:t.key,ge=(t,e,r,s,n)=>{e==="key"||(e[0]==="o"&&e[1]==="\
-n"?(e=e.toLowerCase().slice(2),t._vevents??={},!s&&r&&t.removeEventListener(e,pe),
-!r&&s&&t.addEventListener(e,pe),r!==s&&(t._vevents[e]=s?i=>s.call(rr.host??t,i):
-null)):e==="ref"?typeof s=="function"?r||(t._vcleanup=s(t)):s.current=s.value=t:
-e.startsWith("attr:")?t.setAttribute(e.slice(5),s):e.startsWith("prop:")?t[e.slice(
-5)]=s:!n&&e!=="list"&&e!=="form"&&e in t?t[e]=s??"":s==null||s===!1?t.removeAttribute(
-e):t.setAttribute(e,s))},Ft=(t,e)=>{var r=t.props,s=t.type===Q?document.createTextNode(
-t.tag):(e=e||t.tag==="svg")?document.createElementNS(tr,t.tag,{is:r.is}):document.
-createElement(t.tag,{is:r.is});for(var n in r)ge(s,n,null,r[n],e);if(r.dangerouslySetInnerHTML)
-return s.innerHTML=r.dangerouslySetInnerHTML.__html,t.node=s;for(var i=0;i<t.children.
-length;i++)s.appendChild(Ft(t.children[i]=G(t.children[i]),e));return t.node=s},
-k=(t,e,r,s,n)=>{if(r!==s)if(r!=null&&r.type===Q&&s.type===Q)r.tag!==s.tag&&(e.nodeValue=
-s.tag);else if(r==null||r.tag!==s.tag)e=t.insertBefore(Ft(s=G(s),n),e),r!=null&&
-t.removeChild(r.node);else{var i,o,a,l,u=r.props,g=s.props,c=r.children,f=s.children,
-h=0,_=0,S=c.length-1,A=f.length-1;n=n||s.tag==="svg";for(var m in{...u,...g})(m===
-"value"||m==="selected"||m==="checked"?e[m]:u[m])!==g[m]&&ge(e,m,u[m],g[m],n);if(s.
-props?.dangerouslySetInnerHTML)return e.innerHTML=s.props.dangerouslySetInnerHTML.
-__html,s.node=e;for(;_<=A&&h<=S&&!((a=D(c[h]))==null||a!==D(f[_]));)k(e,c[h].node,
-c[h++],f[_]=G(f[_++]),n);for(;_<=A&&h<=S&&!((a=D(c[S]))==null||a!==D(f[A]));)k(e,
-c[S].node,c[S--],f[A]=G(f[A--]),n);if(h>S)for(;_<=A;)e.insertBefore(Ft(f[_]=G(f[_++]),
-n),(o=c[h])&&o.node);else if(_>A)for(;h<=S;)e.removeChild(c[h++].node);else{for(var v={},
-x={},m=h;m<=S;m++)(a=c[m].key)!=null&&(v[a]=c[m]);for(;_<=A;){if(a=D(o=c[h]),l=D(
-f[_]=G(f[_])),x[a]||l!=null&&l===D(c[h+1])){a==null&&e.removeChild(o.node),h++;continue}
-l==null||r.type===de?(a==null&&(k(e,o&&o.node,o,f[_],n),_++),h++):(a===l?(k(e,o.
-node,o,f[_],n),x[l]=!0,h++):(i=v[l])!=null?(k(e,e.insertBefore(i.node,o&&o.node),
-i,f[_],n),x[l]=!0):k(e,o&&o.node,null,f[_],n),_++)}for(;h<=S;)D(o=c[h++])==null&&
-e.removeChild(o.node);for(var m in v)x[m]==null&&e.removeChild(v[m].node)}}return s.
-node=e},G=t=>t!==!0&&t!==!1&&t?t:Gt(""),_e=t=>t.nodeType===Q?Gt(t.nodeValue,t):Ut(
-t.nodeName.toLowerCase(),ct,jt.map.call(t.childNodes,_e),de,t),Ut=(t,e,r,s,n)=>({
-tag:t,props:e,key:e.key,children:r,type:s,node:n}),er=(t,e,r=jt)=>Ut(t,e,Array.isArray(
-r)?r:[r]),Gt=(t,e)=>Ut(t,ct,jt,Q,e),lt=(t,e)=>e.flat(),R=(t,e,...r)=>typeof t=="\
-function"?t(e,r):er(t,e||{},r.flatMap(s=>typeof s=="string"||typeof s=="number"?
-Gt(s):s)),rr=ct,at=(t,e,r={})=>(at.ctx=r,(e=k(e.parentNode,e,e.vdom||_e(e),t)).vdom=
-t,at.ctx=ct,e);Symbol.metadata??=Symbol("metadata");var nr=new Map,Wt=null,sr=()=>(Wt===null&&(Wt=
-Array.from(document.styleSheets).map(t=>{let e=new CSSStyleSheet,r=Array.from(t.
-cssRules).map(s=>s.cssText).join(" ");return e.replaceSync(r),e})),Wt),zt=!0;var me=!1,ft=class extends HTMLElement{static styles="";static use_global_styles=!1;static define_self(e){
-customElements.get(e)||customElements.define(e,this)}static get observedAttributes(){
-return Array.from(nr.get(this[Symbol.metadata])??[])}observed_attributes=I({});get observedAttributes(){
-return this.observed_attributes}attributeChangedCallback(e,r,s){r!==s&&(this.observedAttributes[e]=
-s)}get_attribute=this.getAttribute.bind(this);set_attribute=this.setAttribute.bind(
-this);remove_attribute=this.removeAttribute.bind(this);on_mount(){}onMount(){}on_mounted(){}onMounted(){}on_unmount(){}onUnmount(){}constructor(){
-if(super(),typeof document>"u")return;this.attachShadow({mode:"open"});let e=this.
-constructor.styles;typeof e!="string"&&!Array.isArray(e)&&(this._log_error(new Error(
-"Static styles property must be a string or string array."),"constructor"),this.
-raw_styles=[""]),Array.isArray(e)||(e=[e]);let r=e.map(s=>{let n=new CSSStyleSheet;
-return n.replaceSync(s),n});if(this.shadowRoot.adoptedStyleSheets=r,this.constructor.
-useGlobalStyles||this.constructor.use_global_styles)try{this.adoptedStyleSheets.
-push(...sr())}catch(s){this._log_error(s,"adding global stylesheets")}this.root_node=
-document.createElement("shadow-root"),this.shadowRoot.appendChild(this.root_node),
-zt&&!me&&(console.warn("Ivysaur is running in development mode. Call set_dev(fal\
-se) to disable this warning."),me=!0)}render(){return zt&&console.warn("No rende\
-r method defined for",this.constructor.name),R(lt,{},[])}connectedCallback(){this.
-_rootEffectScope?.active&&this._rootEffectScope.stop(),this._rootEffectScope=Mt(),
-this._rootEffectScope.run(()=>{try{this.onMount?.(),this.on_mount?.()}catch(e){this.
-_log_error(e,"on mount")}Z(()=>{let e;try{e=this.render.call(this)}catch(r){this.
-_log_error(r,"render")}try{at(R("shadow-root",{},e),this.root_node,{host:this})}catch(r){
-this._log_error(r,"dom update")}});try{this.onMounted?.(),this.on_mounted?.()}catch(e){
-this._log_error(e,"on mounted")}})}disconnectedCallback(){this._rootEffectScope.
-run(()=>{try{this.onUnmount?.(),this.on_unmount?.()}catch(e){this._log_error(e,"\
-on unmount")}}),this._rootEffectScope.stop()}_log_error=(e,r)=>{if(console.error(
-"Error in",r,"of",this.constructor.name,e),zt)throw e};_rootEffectScope;_reactive_states=I(
-{})},Or=String.raw;function ve(){return function(t,{kind:e,name:r}){if(e==="acce\
-ssor")return{get(){return this._reactive_states[r]},set(s){this._reactive_states[r]=
-s},init(s){this._reactive_states??=I({}),this._reactive_states[r]=s}};throw new Error(
-"Invalid decorator usage: @state only works on class accessors.")}}var Ee,be,ut,Yt,V=class extends(be=ft,Ee=[ve()],be){constructor(){super(...arguments);
-Qt(this,Yt,gt(ut,8,this,0)),gt(ut,11,this)}on_mount(){Z(()=>{console.log(this.count)})}render(){
-return R(lt,null,R("h1",null,"hello world"),R("p",null,"hello world"),R("button",
-{onclick:()=>this.count++},"click me"),R("p",null,this.count))}};ut=Xt(be),Yt=new WeakMap,
-Zt(ut,4,"count",Ee,V,Yt),dt(ut,V);V.define_self("test-root");
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __knownSymbol = (name, symbol) => (symbol = Symbol[name]) ? symbol : Symbol.
+for("Symbol." + name);
+var __typeError = (msg) => {
+  throw TypeError(msg);
+};
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true,
+configurable: true, writable: true, value }) : obj[key] = value;
+var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
+var __decoratorStart = (base) => [, , , __create(base?.[__knownSymbol("metadata")] ??
+null)];
+var __decoratorStrings = ["class", "method", "getter", "setter", "accessor", "fi\
+eld", "value", "get", "set"];
+var __expectFn = (fn) => fn !== void 0 && typeof fn !== "function" ? __typeError(
+"Function expected") : fn;
+var __decoratorContext = (kind, name, done, metadata, fns) => ({ kind: __decoratorStrings[kind],
+name, metadata, addInitializer: (fn) => done._ ? __typeError("Already initialize\
+d") : fns.push(__expectFn(fn || null)) });
+var __decoratorMetadata = (array, target) => __defNormalProp(target, __knownSymbol(
+"metadata"), array[3]);
+var __runInitializers = (array, flags, self2, value) => {
+  for (var i = 0, fns = array[flags >> 1], n = fns && fns.length; i < n; i++) flags &
+  1 ? fns[i].call(self2) : value = fns[i].call(self2, value);
+  return value;
+};
+var __decorateElement = (array, flags, name, decorators, target, extra) => {
+  var fn, it, done, ctx, access, k = flags & 7, s = !!(flags & 8), p = !!(flags &
+  16);
+  var j = k > 3 ? array.length + 1 : k ? s ? 1 : 2 : 0, key = __decoratorStrings[k +
+  5];
+  var initializers = k > 3 && (array[j - 1] = []), extraInitializers = array[j] ||
+  (array[j] = []);
+  var desc = k && (!p && !s && (target = target.prototype), k < 5 && (k > 3 || !p) &&
+  __getOwnPropDesc(k < 4 ? target : { get [name]() {
+    return __privateGet(this, extra);
+  }, set [name](x) {
+    return __privateSet(this, extra, x);
+  } }, name));
+  k ? p && k < 4 && __name(extra, (k > 2 ? "set " : k > 1 ? "get " : "") + name) :
+  __name(target, name);
+  for (var i = decorators.length - 1; i >= 0; i--) {
+    ctx = __decoratorContext(k, name, done = {}, array[3], extraInitializers);
+    if (k) {
+      ctx.static = s, ctx.private = p, access = ctx.access = { has: p ? (x) => __privateIn(
+      target, x) : (x) => name in x };
+      if (k ^ 3) access.get = p ? (x) => (k ^ 1 ? __privateGet : __privateMethod)(
+      x, target, k ^ 4 ? extra : desc.get) : (x) => x[name];
+      if (k > 2) access.set = p ? (x, y) => __privateSet(x, target, y, k ^ 4 ? extra :
+      desc.set) : (x, y) => x[name] = y;
+    }
+    it = (0, decorators[i])(k ? k < 4 ? p ? extra : desc[key] : k > 4 ? void 0 :
+    { get: desc.get, set: desc.set } : target, ctx), done._ = 1;
+    if (k ^ 4 || it === void 0) __expectFn(it) && (k > 4 ? initializers.unshift(
+    it) : k ? p ? extra = it : desc[key] = it : target = it);
+    else if (typeof it !== "object" || it === null) __typeError("Object expected");
+    else __expectFn(fn = it.get) && (desc.get = fn), __expectFn(fn = it.set) && (desc.
+    set = fn), __expectFn(fn = it.init) && initializers.unshift(fn);
+  }
+  return k || __decoratorMetadata(array, target), desc && __defProp(target, name,
+  desc), p ? k ^ 4 ? extra : desc : target;
+};
+var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot\
+ " + msg);
+var __privateIn = (member, obj) => Object(obj) !== obj ? __typeError('Cannot use\
+ the "in" operator on this value') : member.has(obj);
+var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read fr\
+om private field"), getter ? getter.call(obj) : member.get(obj));
+var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot\
+ add the same private member more than once") : member instanceof WeakSet ? member.
+add(obj) : member.set(obj, value);
+var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "\
+write to private field"), setter ? setter.call(obj, value) : member.set(obj, value),
+value);
+var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce\
+ss private method"), method);
+
+// node_modules/@vue/shared/dist/shared.esm-bundler.js
+// @__NO_SIDE_EFFECTS__
+function makeMap(str) {
+  const map = /* @__PURE__ */ Object.create(null);
+  for (const key of str.split(",")) map[key] = 1;
+  return (val) => val in map;
+}
+var EMPTY_OBJ = true ? Object.freeze({}) : {};
+var EMPTY_ARR = true ? Object.freeze([]) : [];
+var extend = Object.assign;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var hasOwn = (val, key) => hasOwnProperty.call(val, key);
+var isArray = Array.isArray;
+var isMap = (val) => toTypeString(val) === "[object Map]";
+var isString = (val) => typeof val === "string";
+var isSymbol = (val) => typeof val === "symbol";
+var isObject = (val) => val !== null && typeof val === "object";
+var objectToString = Object.prototype.toString;
+var toTypeString = (value) => objectToString.call(value);
+var toRawType = (value) => {
+  return toTypeString(value).slice(8, -1);
+};
+var isIntegerKey = (key) => isString(key) && key !== "NaN" && key[0] !== "-" && "" +
+parseInt(key, 10) === key;
+var cacheStringFunction = (fn) => {
+  const cache = /* @__PURE__ */ Object.create(null);
+  return (str) => {
+    const hit = cache[str];
+    return hit || (cache[str] = fn(str));
+  };
+};
+var camelizeRE = /-(\w)/g;
+var camelize = cacheStringFunction(
+  (str) => {
+    return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : "");
+  }
+);
+var hyphenateRE = /\B([A-Z])/g;
+var hyphenate = cacheStringFunction(
+  (str) => str.replace(hyphenateRE, "-$1").toLowerCase()
+);
+var capitalize = cacheStringFunction((str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+});
+var toHandlerKey = cacheStringFunction(
+  (str) => {
+    const s = str ? `on${capitalize(str)}` : ``;
+    return s;
+  }
+);
+var hasChanged = (value, oldValue) => !Object.is(value, oldValue);
+var specialBooleanAttrs = `itemscope,allowfullscreen,formnovalidate,ismap,nomodu\
+le,novalidate,readonly`;
+var isBooleanAttr = /* @__PURE__ */ makeMap(
+  specialBooleanAttrs + `,async,autofocus,autoplay,controls,default,defer,disabl\
+ed,hidden,inert,loop,open,required,reversed,scoped,seamless,checked,muted,multip\
+le,selected`
+);
+
+// node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
+function warn(msg, ...args) {
+  console.warn(`[Vue warn] ${msg}`, ...args);
+}
+var activeEffectScope;
+var EffectScope = class {
+  constructor(detached = false) {
+    this.detached = detached;
+    this._active = true;
+    this.effects = [];
+    this.cleanups = [];
+    this._isPaused = false;
+    this.parent = activeEffectScope;
+    if (!detached && activeEffectScope) {
+      this.index = (activeEffectScope.scopes || (activeEffectScope.scopes = [])).
+      push(
+        this
+      ) - 1;
+    }
+  }
+  get active() {
+    return this._active;
+  }
+  pause() {
+    if (this._active) {
+      this._isPaused = true;
+      let i, l;
+      if (this.scopes) {
+        for (i = 0, l = this.scopes.length; i < l; i++) {
+          this.scopes[i].pause();
+        }
+      }
+      for (i = 0, l = this.effects.length; i < l; i++) {
+        this.effects[i].pause();
+      }
+    }
+  }
+  /**
+   * Resumes the effect scope, including all child scopes and effects.
+   */
+  resume() {
+    if (this._active) {
+      if (this._isPaused) {
+        this._isPaused = false;
+        let i, l;
+        if (this.scopes) {
+          for (i = 0, l = this.scopes.length; i < l; i++) {
+            this.scopes[i].resume();
+          }
+        }
+        for (i = 0, l = this.effects.length; i < l; i++) {
+          this.effects[i].resume();
+        }
+      }
+    }
+  }
+  run(fn) {
+    if (this._active) {
+      const currentEffectScope = activeEffectScope;
+      try {
+        activeEffectScope = this;
+        return fn();
+      } finally {
+        activeEffectScope = currentEffectScope;
+      }
+    } else if (true) {
+      warn(`cannot run an inactive effect scope.`);
+    }
+  }
+  /**
+   * This should only be called on non-detached scopes
+   * @internal
+   */
+  on() {
+    activeEffectScope = this;
+  }
+  /**
+   * This should only be called on non-detached scopes
+   * @internal
+   */
+  off() {
+    activeEffectScope = this.parent;
+  }
+  stop(fromParent) {
+    if (this._active) {
+      this._active = false;
+      let i, l;
+      for (i = 0, l = this.effects.length; i < l; i++) {
+        this.effects[i].stop();
+      }
+      this.effects.length = 0;
+      for (i = 0, l = this.cleanups.length; i < l; i++) {
+        this.cleanups[i]();
+      }
+      this.cleanups.length = 0;
+      if (this.scopes) {
+        for (i = 0, l = this.scopes.length; i < l; i++) {
+          this.scopes[i].stop(true);
+        }
+        this.scopes.length = 0;
+      }
+      if (!this.detached && this.parent && !fromParent) {
+        const last = this.parent.scopes.pop();
+        if (last && last !== this) {
+          this.parent.scopes[this.index] = last;
+          last.index = this.index;
+        }
+      }
+      this.parent = void 0;
+    }
+  }
+};
+function effectScope(detached) {
+  return new EffectScope(detached);
+}
+var activeSub;
+var pausedQueueEffects = /* @__PURE__ */ new WeakSet();
+var ReactiveEffect = class {
+  constructor(fn) {
+    this.fn = fn;
+    this.deps = void 0;
+    this.depsTail = void 0;
+    this.flags = 1 | 4;
+    this.next = void 0;
+    this.cleanup = void 0;
+    this.scheduler = void 0;
+    if (activeEffectScope && activeEffectScope.active) {
+      activeEffectScope.effects.push(this);
+    }
+  }
+  pause() {
+    this.flags |= 64;
+  }
+  resume() {
+    if (this.flags & 64) {
+      this.flags &= ~64;
+      if (pausedQueueEffects.has(this)) {
+        pausedQueueEffects.delete(this);
+        this.trigger();
+      }
+    }
+  }
+  /**
+   * @internal
+   */
+  notify() {
+    if (this.flags & 2 && !(this.flags & 32)) {
+      return;
+    }
+    if (!(this.flags & 8)) {
+      batch(this);
+    }
+  }
+  run() {
+    if (!(this.flags & 1)) {
+      return this.fn();
+    }
+    this.flags |= 2;
+    cleanupEffect(this);
+    prepareDeps(this);
+    const prevEffect = activeSub;
+    const prevShouldTrack = shouldTrack;
+    activeSub = this;
+    shouldTrack = true;
+    try {
+      return this.fn();
+    } finally {
+      if (activeSub !== this) {
+        warn(
+          "Active effect was not restored correctly - this is likely a Vue inter\
+nal bug."
+        );
+      }
+      cleanupDeps(this);
+      activeSub = prevEffect;
+      shouldTrack = prevShouldTrack;
+      this.flags &= ~2;
+    }
+  }
+  stop() {
+    if (this.flags & 1) {
+      for (let link = this.deps; link; link = link.nextDep) {
+        removeSub(link);
+      }
+      this.deps = this.depsTail = void 0;
+      cleanupEffect(this);
+      this.onStop && this.onStop();
+      this.flags &= ~1;
+    }
+  }
+  trigger() {
+    if (this.flags & 64) {
+      pausedQueueEffects.add(this);
+    } else if (this.scheduler) {
+      this.scheduler();
+    } else {
+      this.runIfDirty();
+    }
+  }
+  /**
+   * @internal
+   */
+  runIfDirty() {
+    if (isDirty(this)) {
+      this.run();
+    }
+  }
+  get dirty() {
+    return isDirty(this);
+  }
+};
+var batchDepth = 0;
+var batchedSub;
+var batchedComputed;
+function batch(sub, isComputed = false) {
+  sub.flags |= 8;
+  if (isComputed) {
+    sub.next = batchedComputed;
+    batchedComputed = sub;
+    return;
+  }
+  sub.next = batchedSub;
+  batchedSub = sub;
+}
+function startBatch() {
+  batchDepth++;
+}
+function endBatch() {
+  if (--batchDepth > 0) {
+    return;
+  }
+  if (batchedComputed) {
+    let e = batchedComputed;
+    batchedComputed = void 0;
+    while (e) {
+      const next = e.next;
+      e.next = void 0;
+      e.flags &= ~8;
+      e = next;
+    }
+  }
+  let error;
+  while (batchedSub) {
+    let e = batchedSub;
+    batchedSub = void 0;
+    while (e) {
+      const next = e.next;
+      e.next = void 0;
+      e.flags &= ~8;
+      if (e.flags & 1) {
+        try {
+          ;
+          e.trigger();
+        } catch (err) {
+          if (!error) error = err;
+        }
+      }
+      e = next;
+    }
+  }
+  if (error) throw error;
+}
+function prepareDeps(sub) {
+  for (let link = sub.deps; link; link = link.nextDep) {
+    link.version = -1;
+    link.prevActiveLink = link.dep.activeLink;
+    link.dep.activeLink = link;
+  }
+}
+function cleanupDeps(sub) {
+  let head;
+  let tail = sub.depsTail;
+  let link = tail;
+  while (link) {
+    const prev = link.prevDep;
+    if (link.version === -1) {
+      if (link === tail) tail = prev;
+      removeSub(link);
+      removeDep(link);
+    } else {
+      head = link;
+    }
+    link.dep.activeLink = link.prevActiveLink;
+    link.prevActiveLink = void 0;
+    link = prev;
+  }
+  sub.deps = head;
+  sub.depsTail = tail;
+}
+function isDirty(sub) {
+  for (let link = sub.deps; link; link = link.nextDep) {
+    if (link.dep.version !== link.version || link.dep.computed && (refreshComputed(
+    link.dep.computed) || link.dep.version !== link.version)) {
+      return true;
+    }
+  }
+  if (sub._dirty) {
+    return true;
+  }
+  return false;
+}
+function refreshComputed(computed) {
+  if (computed.flags & 4 && !(computed.flags & 16)) {
+    return;
+  }
+  computed.flags &= ~16;
+  if (computed.globalVersion === globalVersion) {
+    return;
+  }
+  computed.globalVersion = globalVersion;
+  const dep = computed.dep;
+  computed.flags |= 2;
+  if (dep.version > 0 && !computed.isSSR && computed.deps && !isDirty(computed)) {
+    computed.flags &= ~2;
+    return;
+  }
+  const prevSub = activeSub;
+  const prevShouldTrack = shouldTrack;
+  activeSub = computed;
+  shouldTrack = true;
+  try {
+    prepareDeps(computed);
+    const value = computed.fn(computed._value);
+    if (dep.version === 0 || hasChanged(value, computed._value)) {
+      computed._value = value;
+      dep.version++;
+    }
+  } catch (err) {
+    dep.version++;
+    throw err;
+  } finally {
+    activeSub = prevSub;
+    shouldTrack = prevShouldTrack;
+    cleanupDeps(computed);
+    computed.flags &= ~2;
+  }
+}
+function removeSub(link, soft = false) {
+  const { dep, prevSub, nextSub } = link;
+  if (prevSub) {
+    prevSub.nextSub = nextSub;
+    link.prevSub = void 0;
+  }
+  if (nextSub) {
+    nextSub.prevSub = prevSub;
+    link.nextSub = void 0;
+  }
+  if (dep.subsHead === link) {
+    dep.subsHead = nextSub;
+  }
+  if (dep.subs === link) {
+    dep.subs = prevSub;
+    if (!prevSub && dep.computed) {
+      dep.computed.flags &= ~4;
+      for (let l = dep.computed.deps; l; l = l.nextDep) {
+        removeSub(l, true);
+      }
+    }
+  }
+  if (!soft && !--dep.sc && dep.map) {
+    dep.map.delete(dep.key);
+  }
+}
+function removeDep(link) {
+  const { prevDep, nextDep } = link;
+  if (prevDep) {
+    prevDep.nextDep = nextDep;
+    link.prevDep = void 0;
+  }
+  if (nextDep) {
+    nextDep.prevDep = prevDep;
+    link.nextDep = void 0;
+  }
+}
+function effect(fn, options) {
+  if (fn.effect instanceof ReactiveEffect) {
+    fn = fn.effect.fn;
+  }
+  const e = new ReactiveEffect(fn);
+  if (options) {
+    extend(e, options);
+  }
+  try {
+    e.run();
+  } catch (err) {
+    e.stop();
+    throw err;
+  }
+  const runner = e.run.bind(e);
+  runner.effect = e;
+  return runner;
+}
+var shouldTrack = true;
+var trackStack = [];
+function pauseTracking() {
+  trackStack.push(shouldTrack);
+  shouldTrack = false;
+}
+function resetTracking() {
+  const last = trackStack.pop();
+  shouldTrack = last === void 0 ? true : last;
+}
+function cleanupEffect(e) {
+  const { cleanup } = e;
+  e.cleanup = void 0;
+  if (cleanup) {
+    const prevSub = activeSub;
+    activeSub = void 0;
+    try {
+      cleanup();
+    } finally {
+      activeSub = prevSub;
+    }
+  }
+}
+var globalVersion = 0;
+var Link = class {
+  constructor(sub, dep) {
+    this.sub = sub;
+    this.dep = dep;
+    this.version = dep.version;
+    this.nextDep = this.prevDep = this.nextSub = this.prevSub = this.prevActiveLink =
+    void 0;
+  }
+};
+var Dep = class {
+  constructor(computed) {
+    this.computed = computed;
+    this.version = 0;
+    this.activeLink = void 0;
+    this.subs = void 0;
+    this.map = void 0;
+    this.key = void 0;
+    this.sc = 0;
+    if (true) {
+      this.subsHead = void 0;
+    }
+  }
+  track(debugInfo) {
+    if (!activeSub || !shouldTrack || activeSub === this.computed) {
+      return;
+    }
+    let link = this.activeLink;
+    if (link === void 0 || link.sub !== activeSub) {
+      link = this.activeLink = new Link(activeSub, this);
+      if (!activeSub.deps) {
+        activeSub.deps = activeSub.depsTail = link;
+      } else {
+        link.prevDep = activeSub.depsTail;
+        activeSub.depsTail.nextDep = link;
+        activeSub.depsTail = link;
+      }
+      addSub(link);
+    } else if (link.version === -1) {
+      link.version = this.version;
+      if (link.nextDep) {
+        const next = link.nextDep;
+        next.prevDep = link.prevDep;
+        if (link.prevDep) {
+          link.prevDep.nextDep = next;
+        }
+        link.prevDep = activeSub.depsTail;
+        link.nextDep = void 0;
+        activeSub.depsTail.nextDep = link;
+        activeSub.depsTail = link;
+        if (activeSub.deps === link) {
+          activeSub.deps = next;
+        }
+      }
+    }
+    if (activeSub.onTrack) {
+      activeSub.onTrack(
+        extend(
+          {
+            effect: activeSub
+          },
+          debugInfo
+        )
+      );
+    }
+    return link;
+  }
+  trigger(debugInfo) {
+    this.version++;
+    globalVersion++;
+    this.notify(debugInfo);
+  }
+  notify(debugInfo) {
+    startBatch();
+    try {
+      if (true) {
+        for (let head = this.subsHead; head; head = head.nextSub) {
+          if (head.sub.onTrigger && !(head.sub.flags & 8)) {
+            head.sub.onTrigger(
+              extend(
+                {
+                  effect: head.sub
+                },
+                debugInfo
+              )
+            );
+          }
+        }
+      }
+      for (let link = this.subs; link; link = link.prevSub) {
+        if (link.sub.notify()) {
+          ;
+          link.sub.dep.notify();
+        }
+      }
+    } finally {
+      endBatch();
+    }
+  }
+};
+function addSub(link) {
+  link.dep.sc++;
+  if (link.sub.flags & 4) {
+    const computed = link.dep.computed;
+    if (computed && !link.dep.subs) {
+      computed.flags |= 4 | 16;
+      for (let l = computed.deps; l; l = l.nextDep) {
+        addSub(l);
+      }
+    }
+    const currentTail = link.dep.subs;
+    if (currentTail !== link) {
+      link.prevSub = currentTail;
+      if (currentTail) currentTail.nextSub = link;
+    }
+    if (link.dep.subsHead === void 0) {
+      link.dep.subsHead = link;
+    }
+    link.dep.subs = link;
+  }
+}
+var targetMap = /* @__PURE__ */ new WeakMap();
+var ITERATE_KEY = Symbol(
+  true ? "Object iterate" : ""
+);
+var MAP_KEY_ITERATE_KEY = Symbol(
+  true ? "Map keys iterate" : ""
+);
+var ARRAY_ITERATE_KEY = Symbol(
+  true ? "Array iterate" : ""
+);
+function track(target, type, key) {
+  if (shouldTrack && activeSub) {
+    let depsMap = targetMap.get(target);
+    if (!depsMap) {
+      targetMap.set(target, depsMap = /* @__PURE__ */ new Map());
+    }
+    let dep = depsMap.get(key);
+    if (!dep) {
+      depsMap.set(key, dep = new Dep());
+      dep.map = depsMap;
+      dep.key = key;
+    }
+    if (true) {
+      dep.track({
+        target,
+        type,
+        key
+      });
+    } else {
+      dep.track();
+    }
+  }
+}
+function trigger(target, type, key, newValue, oldValue, oldTarget) {
+  const depsMap = targetMap.get(target);
+  if (!depsMap) {
+    globalVersion++;
+    return;
+  }
+  const run = (dep) => {
+    if (dep) {
+      if (true) {
+        dep.trigger({
+          target,
+          type,
+          key,
+          newValue,
+          oldValue,
+          oldTarget
+        });
+      } else {
+        dep.trigger();
+      }
+    }
+  };
+  startBatch();
+  if (type === "clear") {
+    depsMap.forEach(run);
+  } else {
+    const targetIsArray = isArray(target);
+    const isArrayIndex = targetIsArray && isIntegerKey(key);
+    if (targetIsArray && key === "length") {
+      const newLength = Number(newValue);
+      depsMap.forEach((dep, key2) => {
+        if (key2 === "length" || key2 === ARRAY_ITERATE_KEY || !isSymbol(key2) &&
+        key2 >= newLength) {
+          run(dep);
+        }
+      });
+    } else {
+      if (key !== void 0 || depsMap.has(void 0)) {
+        run(depsMap.get(key));
+      }
+      if (isArrayIndex) {
+        run(depsMap.get(ARRAY_ITERATE_KEY));
+      }
+      switch (type) {
+        case "add":
+          if (!targetIsArray) {
+            run(depsMap.get(ITERATE_KEY));
+            if (isMap(target)) {
+              run(depsMap.get(MAP_KEY_ITERATE_KEY));
+            }
+          } else if (isArrayIndex) {
+            run(depsMap.get("length"));
+          }
+          break;
+        case "delete":
+          if (!targetIsArray) {
+            run(depsMap.get(ITERATE_KEY));
+            if (isMap(target)) {
+              run(depsMap.get(MAP_KEY_ITERATE_KEY));
+            }
+          }
+          break;
+        case "set":
+          if (isMap(target)) {
+            run(depsMap.get(ITERATE_KEY));
+          }
+          break;
+      }
+    }
+  }
+  endBatch();
+}
+function reactiveReadArray(array) {
+  const raw = toRaw(array);
+  if (raw === array) return raw;
+  track(raw, "iterate", ARRAY_ITERATE_KEY);
+  return isShallow(array) ? raw : raw.map(toReactive);
+}
+function shallowReadArray(arr) {
+  track(arr = toRaw(arr), "iterate", ARRAY_ITERATE_KEY);
+  return arr;
+}
+var arrayInstrumentations = {
+  __proto__: null,
+  [Symbol.iterator]() {
+    return iterator(this, Symbol.iterator, toReactive);
+  },
+  concat(...args) {
+    return reactiveReadArray(this).concat(
+      ...args.map((x) => isArray(x) ? reactiveReadArray(x) : x)
+    );
+  },
+  entries() {
+    return iterator(this, "entries", (value) => {
+      value[1] = toReactive(value[1]);
+      return value;
+    });
+  },
+  every(fn, thisArg) {
+    return apply(this, "every", fn, thisArg, void 0, arguments);
+  },
+  filter(fn, thisArg) {
+    return apply(this, "filter", fn, thisArg, (v) => v.map(toReactive), arguments);
+  },
+  find(fn, thisArg) {
+    return apply(this, "find", fn, thisArg, toReactive, arguments);
+  },
+  findIndex(fn, thisArg) {
+    return apply(this, "findIndex", fn, thisArg, void 0, arguments);
+  },
+  findLast(fn, thisArg) {
+    return apply(this, "findLast", fn, thisArg, toReactive, arguments);
+  },
+  findLastIndex(fn, thisArg) {
+    return apply(this, "findLastIndex", fn, thisArg, void 0, arguments);
+  },
+  // flat, flatMap could benefit from ARRAY_ITERATE but are not straight-forward to implement
+  forEach(fn, thisArg) {
+    return apply(this, "forEach", fn, thisArg, void 0, arguments);
+  },
+  includes(...args) {
+    return searchProxy(this, "includes", args);
+  },
+  indexOf(...args) {
+    return searchProxy(this, "indexOf", args);
+  },
+  join(separator) {
+    return reactiveReadArray(this).join(separator);
+  },
+  // keys() iterator only reads `length`, no optimisation required
+  lastIndexOf(...args) {
+    return searchProxy(this, "lastIndexOf", args);
+  },
+  map(fn, thisArg) {
+    return apply(this, "map", fn, thisArg, void 0, arguments);
+  },
+  pop() {
+    return noTracking(this, "pop");
+  },
+  push(...args) {
+    return noTracking(this, "push", args);
+  },
+  reduce(fn, ...args) {
+    return reduce(this, "reduce", fn, args);
+  },
+  reduceRight(fn, ...args) {
+    return reduce(this, "reduceRight", fn, args);
+  },
+  shift() {
+    return noTracking(this, "shift");
+  },
+  // slice could use ARRAY_ITERATE but also seems to beg for range tracking
+  some(fn, thisArg) {
+    return apply(this, "some", fn, thisArg, void 0, arguments);
+  },
+  splice(...args) {
+    return noTracking(this, "splice", args);
+  },
+  toReversed() {
+    return reactiveReadArray(this).toReversed();
+  },
+  toSorted(comparer) {
+    return reactiveReadArray(this).toSorted(comparer);
+  },
+  toSpliced(...args) {
+    return reactiveReadArray(this).toSpliced(...args);
+  },
+  unshift(...args) {
+    return noTracking(this, "unshift", args);
+  },
+  values() {
+    return iterator(this, "values", toReactive);
+  }
+};
+function iterator(self2, method, wrapValue) {
+  const arr = shallowReadArray(self2);
+  const iter = arr[method]();
+  if (arr !== self2 && !isShallow(self2)) {
+    iter._next = iter.next;
+    iter.next = () => {
+      const result = iter._next();
+      if (result.value) {
+        result.value = wrapValue(result.value);
+      }
+      return result;
+    };
+  }
+  return iter;
+}
+var arrayProto = Array.prototype;
+function apply(self2, method, fn, thisArg, wrappedRetFn, args) {
+  const arr = shallowReadArray(self2);
+  const needsWrap = arr !== self2 && !isShallow(self2);
+  const methodFn = arr[method];
+  if (methodFn !== arrayProto[method]) {
+    const result2 = methodFn.apply(self2, args);
+    return needsWrap ? toReactive(result2) : result2;
+  }
+  let wrappedFn = fn;
+  if (arr !== self2) {
+    if (needsWrap) {
+      wrappedFn = function(item, index) {
+        return fn.call(this, toReactive(item), index, self2);
+      };
+    } else if (fn.length > 2) {
+      wrappedFn = function(item, index) {
+        return fn.call(this, item, index, self2);
+      };
+    }
+  }
+  const result = methodFn.call(arr, wrappedFn, thisArg);
+  return needsWrap && wrappedRetFn ? wrappedRetFn(result) : result;
+}
+function reduce(self2, method, fn, args) {
+  const arr = shallowReadArray(self2);
+  let wrappedFn = fn;
+  if (arr !== self2) {
+    if (!isShallow(self2)) {
+      wrappedFn = function(acc, item, index) {
+        return fn.call(this, acc, toReactive(item), index, self2);
+      };
+    } else if (fn.length > 3) {
+      wrappedFn = function(acc, item, index) {
+        return fn.call(this, acc, item, index, self2);
+      };
+    }
+  }
+  return arr[method](wrappedFn, ...args);
+}
+function searchProxy(self2, method, args) {
+  const arr = toRaw(self2);
+  track(arr, "iterate", ARRAY_ITERATE_KEY);
+  const res = arr[method](...args);
+  if ((res === -1 || res === false) && isProxy(args[0])) {
+    args[0] = toRaw(args[0]);
+    return arr[method](...args);
+  }
+  return res;
+}
+function noTracking(self2, method, args = []) {
+  pauseTracking();
+  startBatch();
+  const res = toRaw(self2)[method].apply(self2, args);
+  endBatch();
+  resetTracking();
+  return res;
+}
+var isNonTrackableKeys = /* @__PURE__ */ makeMap(`__proto__,__v_isRef,__isVue`);
+var builtInSymbols = new Set(
+  /* @__PURE__ */ Object.getOwnPropertyNames(Symbol).filter((key) => key !== "ar\
+guments" && key !== "caller").map((key) => Symbol[key]).filter(isSymbol)
+);
+function hasOwnProperty2(key) {
+  if (!isSymbol(key)) key = String(key);
+  const obj = toRaw(this);
+  track(obj, "has", key);
+  return obj.hasOwnProperty(key);
+}
+var BaseReactiveHandler = class {
+  constructor(_isReadonly = false, _isShallow = false) {
+    this._isReadonly = _isReadonly;
+    this._isShallow = _isShallow;
+  }
+  get(target, key, receiver) {
+    if (key === "__v_skip") return target["__v_skip"];
+    const isReadonly2 = this._isReadonly, isShallow2 = this._isShallow;
+    if (key === "__v_isReactive") {
+      return !isReadonly2;
+    } else if (key === "__v_isReadonly") {
+      return isReadonly2;
+    } else if (key === "__v_isShallow") {
+      return isShallow2;
+    } else if (key === "__v_raw") {
+      if (receiver === (isReadonly2 ? isShallow2 ? shallowReadonlyMap : readonlyMap :
+      isShallow2 ? shallowReactiveMap : reactiveMap).get(target) || // receiver is not the reactive proxy, but has the same prototype
+      // this means the receiver is a user proxy of the reactive proxy
+      Object.getPrototypeOf(target) === Object.getPrototypeOf(receiver)) {
+        return target;
+      }
+      return;
+    }
+    const targetIsArray = isArray(target);
+    if (!isReadonly2) {
+      let fn;
+      if (targetIsArray && (fn = arrayInstrumentations[key])) {
+        return fn;
+      }
+      if (key === "hasOwnProperty") {
+        return hasOwnProperty2;
+      }
+    }
+    const res = Reflect.get(
+      target,
+      key,
+      // if this is a proxy wrapping a ref, return methods using the raw ref
+      // as receiver so that we don't have to call `toRaw` on the ref in all
+      // its class methods
+      isRef(target) ? target : receiver
+    );
+    if (isSymbol(key) ? builtInSymbols.has(key) : isNonTrackableKeys(key)) {
+      return res;
+    }
+    if (!isReadonly2) {
+      track(target, "get", key);
+    }
+    if (isShallow2) {
+      return res;
+    }
+    if (isRef(res)) {
+      return targetIsArray && isIntegerKey(key) ? res : res.value;
+    }
+    if (isObject(res)) {
+      return isReadonly2 ? readonly(res) : reactive(res);
+    }
+    return res;
+  }
+};
+var MutableReactiveHandler = class extends BaseReactiveHandler {
+  constructor(isShallow2 = false) {
+    super(false, isShallow2);
+  }
+  set(target, key, value, receiver) {
+    let oldValue = target[key];
+    if (!this._isShallow) {
+      const isOldValueReadonly = isReadonly(oldValue);
+      if (!isShallow(value) && !isReadonly(value)) {
+        oldValue = toRaw(oldValue);
+        value = toRaw(value);
+      }
+      if (!isArray(target) && isRef(oldValue) && !isRef(value)) {
+        if (isOldValueReadonly) {
+          return false;
+        } else {
+          oldValue.value = value;
+          return true;
+        }
+      }
+    }
+    const hadKey = isArray(target) && isIntegerKey(key) ? Number(key) < target.length :
+    hasOwn(target, key);
+    const result = Reflect.set(
+      target,
+      key,
+      value,
+      isRef(target) ? target : receiver
+    );
+    if (target === toRaw(receiver)) {
+      if (!hadKey) {
+        trigger(target, "add", key, value);
+      } else if (hasChanged(value, oldValue)) {
+        trigger(target, "set", key, value, oldValue);
+      }
+    }
+    return result;
+  }
+  deleteProperty(target, key) {
+    const hadKey = hasOwn(target, key);
+    const oldValue = target[key];
+    const result = Reflect.deleteProperty(target, key);
+    if (result && hadKey) {
+      trigger(target, "delete", key, void 0, oldValue);
+    }
+    return result;
+  }
+  has(target, key) {
+    const result = Reflect.has(target, key);
+    if (!isSymbol(key) || !builtInSymbols.has(key)) {
+      track(target, "has", key);
+    }
+    return result;
+  }
+  ownKeys(target) {
+    track(
+      target,
+      "iterate",
+      isArray(target) ? "length" : ITERATE_KEY
+    );
+    return Reflect.ownKeys(target);
+  }
+};
+var ReadonlyReactiveHandler = class extends BaseReactiveHandler {
+  constructor(isShallow2 = false) {
+    super(true, isShallow2);
+  }
+  set(target, key) {
+    if (true) {
+      warn(
+        `Set operation on key "${String(key)}" failed: target is readonly.`,
+        target
+      );
+    }
+    return true;
+  }
+  deleteProperty(target, key) {
+    if (true) {
+      warn(
+        `Delete operation on key "${String(key)}" failed: target is readonly.`,
+        target
+      );
+    }
+    return true;
+  }
+};
+var mutableHandlers = /* @__PURE__ */ new MutableReactiveHandler();
+var readonlyHandlers = /* @__PURE__ */ new ReadonlyReactiveHandler();
+var toShallow = (value) => value;
+var getProto = (v) => Reflect.getPrototypeOf(v);
+function createIterableMethod(method, isReadonly2, isShallow2) {
+  return function(...args) {
+    const target = this["__v_raw"];
+    const rawTarget = toRaw(target);
+    const targetIsMap = isMap(rawTarget);
+    const isPair = method === "entries" || method === Symbol.iterator && targetIsMap;
+    const isKeyOnly = method === "keys" && targetIsMap;
+    const innerIterator = target[method](...args);
+    const wrap = isShallow2 ? toShallow : isReadonly2 ? toReadonly : toReactive;
+    !isReadonly2 && track(
+      rawTarget,
+      "iterate",
+      isKeyOnly ? MAP_KEY_ITERATE_KEY : ITERATE_KEY
+    );
+    return {
+      // iterator protocol
+      next() {
+        const { value, done } = innerIterator.next();
+        return done ? { value, done } : {
+          value: isPair ? [wrap(value[0]), wrap(value[1])] : wrap(value),
+          done
+        };
+      },
+      // iterable protocol
+      [Symbol.iterator]() {
+        return this;
+      }
+    };
+  };
+}
+function createReadonlyMethod(type) {
+  return function(...args) {
+    if (true) {
+      const key = args[0] ? `on key "${args[0]}" ` : ``;
+      warn(
+        `${capitalize(type)} operation ${key}failed: target is readonly.`,
+        toRaw(this)
+      );
+    }
+    return type === "delete" ? false : type === "clear" ? void 0 : this;
+  };
+}
+function createInstrumentations(readonly2, shallow) {
+  const instrumentations = {
+    get(key) {
+      const target = this["__v_raw"];
+      const rawTarget = toRaw(target);
+      const rawKey = toRaw(key);
+      if (!readonly2) {
+        if (hasChanged(key, rawKey)) {
+          track(rawTarget, "get", key);
+        }
+        track(rawTarget, "get", rawKey);
+      }
+      const { has } = getProto(rawTarget);
+      const wrap = shallow ? toShallow : readonly2 ? toReadonly : toReactive;
+      if (has.call(rawTarget, key)) {
+        return wrap(target.get(key));
+      } else if (has.call(rawTarget, rawKey)) {
+        return wrap(target.get(rawKey));
+      } else if (target !== rawTarget) {
+        target.get(key);
+      }
+    },
+    get size() {
+      const target = this["__v_raw"];
+      !readonly2 && track(toRaw(target), "iterate", ITERATE_KEY);
+      return Reflect.get(target, "size", target);
+    },
+    has(key) {
+      const target = this["__v_raw"];
+      const rawTarget = toRaw(target);
+      const rawKey = toRaw(key);
+      if (!readonly2) {
+        if (hasChanged(key, rawKey)) {
+          track(rawTarget, "has", key);
+        }
+        track(rawTarget, "has", rawKey);
+      }
+      return key === rawKey ? target.has(key) : target.has(key) || target.has(rawKey);
+    },
+    forEach(callback, thisArg) {
+      const observed = this;
+      const target = observed["__v_raw"];
+      const rawTarget = toRaw(target);
+      const wrap = shallow ? toShallow : readonly2 ? toReadonly : toReactive;
+      !readonly2 && track(rawTarget, "iterate", ITERATE_KEY);
+      return target.forEach((value, key) => {
+        return callback.call(thisArg, wrap(value), wrap(key), observed);
+      });
+    }
+  };
+  extend(
+    instrumentations,
+    readonly2 ? {
+      add: createReadonlyMethod("add"),
+      set: createReadonlyMethod("set"),
+      delete: createReadonlyMethod("delete"),
+      clear: createReadonlyMethod("clear")
+    } : {
+      add(value) {
+        if (!shallow && !isShallow(value) && !isReadonly(value)) {
+          value = toRaw(value);
+        }
+        const target = toRaw(this);
+        const proto = getProto(target);
+        const hadKey = proto.has.call(target, value);
+        if (!hadKey) {
+          target.add(value);
+          trigger(target, "add", value, value);
+        }
+        return this;
+      },
+      set(key, value) {
+        if (!shallow && !isShallow(value) && !isReadonly(value)) {
+          value = toRaw(value);
+        }
+        const target = toRaw(this);
+        const { has, get } = getProto(target);
+        let hadKey = has.call(target, key);
+        if (!hadKey) {
+          key = toRaw(key);
+          hadKey = has.call(target, key);
+        } else if (true) {
+          checkIdentityKeys(target, has, key);
+        }
+        const oldValue = get.call(target, key);
+        target.set(key, value);
+        if (!hadKey) {
+          trigger(target, "add", key, value);
+        } else if (hasChanged(value, oldValue)) {
+          trigger(target, "set", key, value, oldValue);
+        }
+        return this;
+      },
+      delete(key) {
+        const target = toRaw(this);
+        const { has, get } = getProto(target);
+        let hadKey = has.call(target, key);
+        if (!hadKey) {
+          key = toRaw(key);
+          hadKey = has.call(target, key);
+        } else if (true) {
+          checkIdentityKeys(target, has, key);
+        }
+        const oldValue = get ? get.call(target, key) : void 0;
+        const result = target.delete(key);
+        if (hadKey) {
+          trigger(target, "delete", key, void 0, oldValue);
+        }
+        return result;
+      },
+      clear() {
+        const target = toRaw(this);
+        const hadItems = target.size !== 0;
+        const oldTarget = true ? isMap(target) ? new Map(target) : new Set(target) :
+        void 0;
+        const result = target.clear();
+        if (hadItems) {
+          trigger(
+            target,
+            "clear",
+            void 0,
+            void 0,
+            oldTarget
+          );
+        }
+        return result;
+      }
+    }
+  );
+  const iteratorMethods = [
+    "keys",
+    "values",
+    "entries",
+    Symbol.iterator
+  ];
+  iteratorMethods.forEach((method) => {
+    instrumentations[method] = createIterableMethod(method, readonly2, shallow);
+  });
+  return instrumentations;
+}
+function createInstrumentationGetter(isReadonly2, shallow) {
+  const instrumentations = createInstrumentations(isReadonly2, shallow);
+  return (target, key, receiver) => {
+    if (key === "__v_isReactive") {
+      return !isReadonly2;
+    } else if (key === "__v_isReadonly") {
+      return isReadonly2;
+    } else if (key === "__v_raw") {
+      return target;
+    }
+    return Reflect.get(
+      hasOwn(instrumentations, key) && key in target ? instrumentations : target,
+      key,
+      receiver
+    );
+  };
+}
+var mutableCollectionHandlers = {
+  get: /* @__PURE__ */ createInstrumentationGetter(false, false)
+};
+var readonlyCollectionHandlers = {
+  get: /* @__PURE__ */ createInstrumentationGetter(true, false)
+};
+function checkIdentityKeys(target, has, key) {
+  const rawKey = toRaw(key);
+  if (rawKey !== key && has.call(target, rawKey)) {
+    const type = toRawType(target);
+    warn(
+      `Reactive ${type} contains both the raw and reactive versions of the same \
+object${type === `Map` ? ` as keys` : ``}, which can lead to inconsistencies. Av\
+oid differentiating between the raw and reactive versions of an object and only \
+use the reactive version if possible.`
+    );
+  }
+}
+var reactiveMap = /* @__PURE__ */ new WeakMap();
+var shallowReactiveMap = /* @__PURE__ */ new WeakMap();
+var readonlyMap = /* @__PURE__ */ new WeakMap();
+var shallowReadonlyMap = /* @__PURE__ */ new WeakMap();
+function targetTypeMap(rawType) {
+  switch (rawType) {
+    case "Object":
+    case "Array":
+      return 1;
+    case "Map":
+    case "Set":
+    case "WeakMap":
+    case "WeakSet":
+      return 2;
+    default:
+      return 0;
+  }
+}
+function getTargetType(value) {
+  return value["__v_skip"] || !Object.isExtensible(value) ? 0 : targetTypeMap(toRawType(
+  value));
+}
+function reactive(target) {
+  if (isReadonly(target)) {
+    return target;
+  }
+  return createReactiveObject(
+    target,
+    false,
+    mutableHandlers,
+    mutableCollectionHandlers,
+    reactiveMap
+  );
+}
+function readonly(target) {
+  return createReactiveObject(
+    target,
+    true,
+    readonlyHandlers,
+    readonlyCollectionHandlers,
+    readonlyMap
+  );
+}
+function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandlers, proxyMap) {
+  if (!isObject(target)) {
+    if (true) {
+      warn(
+        `value cannot be made ${isReadonly2 ? "readonly" : "reactive"}: ${String(
+          target
+        )}`
+      );
+    }
+    return target;
+  }
+  if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) {
+    return target;
+  }
+  const existingProxy = proxyMap.get(target);
+  if (existingProxy) {
+    return existingProxy;
+  }
+  const targetType = getTargetType(target);
+  if (targetType === 0) {
+    return target;
+  }
+  const proxy = new Proxy(
+    target,
+    targetType === 2 ? collectionHandlers : baseHandlers
+  );
+  proxyMap.set(target, proxy);
+  return proxy;
+}
+function isReadonly(value) {
+  return !!(value && value["__v_isReadonly"]);
+}
+function isShallow(value) {
+  return !!(value && value["__v_isShallow"]);
+}
+function isProxy(value) {
+  return value ? !!value["__v_raw"] : false;
+}
+function toRaw(observed) {
+  const raw = observed && observed["__v_raw"];
+  return raw ? toRaw(raw) : observed;
+}
+var toReactive = (value) => isObject(value) ? reactive(value) : value;
+var toReadonly = (value) => isObject(value) ? readonly(value) : value;
+function isRef(r) {
+  return r ? r["__v_isRef"] === true : false;
+}
+
+// src/renderer.js
+var SSR_NODE = 1;
+var TEXT_NODE = 3;
+var EMPTY_OBJ2 = {};
+var EMPTY_ARR2 = [];
+var SVG_NS = "http://www.w3.org/2000/svg";
+var event_delegate = function(event) {
+  this._vevents[event.type](event);
+};
+var get_key = (vdom) => vdom == null ? vdom : vdom.key;
+var patch_property = (node, key, oldValue, newValue, isSvg) => {
+  if (key === "key") {
+  } else if (key[0] === "o" && key[1] === "n") {
+    key = key.toLowerCase().slice(2), node._vevents ??= {};
+    if (!newValue && oldValue) node.removeEventListener(key, event_delegate);
+    if (!oldValue && newValue) node.addEventListener(key, event_delegate);
+    if (oldValue !== newValue) {
+      node._vevents[key] = newValue ? (e) => newValue.call(render_ctx.host ?? node,
+      e) : null;
+    }
+  } else if (key === "ref") {
+    if (typeof newValue === "function") {
+      if (!oldValue) node._vcleanup = newValue(node);
+    } else {
+      newValue.current = newValue.value = node;
+    }
+  } else if (key.startsWith("attr:")) {
+    node.setAttribute(key.slice(5), newValue);
+  } else if (key.startsWith("prop:")) {
+    node[key.slice(5)] = newValue;
+  } else if (!isSvg && key !== "list" && key !== "form" && key in node) {
+    node[key] = newValue == null ? "" : newValue;
+  } else if (newValue == null || newValue === false) {
+    node.removeAttribute(key);
+  } else {
+    node.setAttribute(key, newValue);
+  }
+};
+var create_node = (vdom, isSvg) => {
+  var props = vdom.props, node = vdom.type === TEXT_NODE ? document.createTextNode(
+  vdom.tag) : (isSvg = isSvg || vdom.tag === "svg") ? document.createElementNS(SVG_NS,
+  vdom.tag, { is: props.is }) : document.createElement(vdom.tag, { is: props.is });
+  for (var k in props) {
+    patch_property(node, k, null, props[k], isSvg);
+  }
+  if (props.dangerouslySetInnerHTML) {
+    node.innerHTML = props.dangerouslySetInnerHTML.__html;
+    return vdom.node = node;
+  }
+  for (var i = 0; i < vdom.children.length; i++) {
+    node.appendChild(
+      create_node(vdom.children[i] = vdomify(vdom.children[i]), isSvg)
+    );
+  }
+  return vdom.node = node;
+};
+var patch_node = (parent, node, oldVNode, newVNode, isSvg) => {
+  if (oldVNode === newVNode) {
+  } else if (oldVNode != null && oldVNode.type === TEXT_NODE && newVNode.type ===
+  TEXT_NODE) {
+    if (oldVNode.tag !== newVNode.tag) node.nodeValue = newVNode.tag;
+  } else if (oldVNode == null || oldVNode.tag !== newVNode.tag) {
+    node = parent.insertBefore(
+      create_node(newVNode = vdomify(newVNode), isSvg),
+      node
+    );
+    if (oldVNode != null) {
+      parent.removeChild(oldVNode.node);
+    }
+  } else {
+    var tmpVKid, oldVKid, oldKey, newKey, oldProps = oldVNode.props, newProps = newVNode.
+    props, oldVKids = oldVNode.children, newVKids = newVNode.children, oldHead = 0,
+    newHead = 0, oldTail = oldVKids.length - 1, newTail = newVKids.length - 1;
+    isSvg = isSvg || newVNode.tag === "svg";
+    for (var i in { ...oldProps, ...newProps }) {
+      if ((i === "value" || i === "selected" || i === "checked" ? node[i] : oldProps[i]) !==
+      newProps[i]) {
+        patch_property(node, i, oldProps[i], newProps[i], isSvg);
+      }
+    }
+    if (newVNode.props?.dangerouslySetInnerHTML) {
+      node.innerHTML = newVNode.props.dangerouslySetInnerHTML.__html;
+      return newVNode.node = node;
+    }
+    while (newHead <= newTail && oldHead <= oldTail) {
+      if ((oldKey = get_key(oldVKids[oldHead])) == null || oldKey !== get_key(newVKids[newHead])) {
+        break;
+      }
+      patch_node(
+        node,
+        oldVKids[oldHead].node,
+        oldVKids[oldHead++],
+        newVKids[newHead] = vdomify(newVKids[newHead++]),
+        isSvg
+      );
+    }
+    while (newHead <= newTail && oldHead <= oldTail) {
+      if ((oldKey = get_key(oldVKids[oldTail])) == null || oldKey !== get_key(newVKids[newTail])) {
+        break;
+      }
+      patch_node(
+        node,
+        oldVKids[oldTail].node,
+        oldVKids[oldTail--],
+        newVKids[newTail] = vdomify(newVKids[newTail--]),
+        isSvg
+      );
+    }
+    if (oldHead > oldTail) {
+      while (newHead <= newTail) {
+        node.insertBefore(
+          create_node(newVKids[newHead] = vdomify(newVKids[newHead++]), isSvg),
+          (oldVKid = oldVKids[oldHead]) && oldVKid.node
+        );
+      }
+    } else if (newHead > newTail) {
+      while (oldHead <= oldTail) {
+        node.removeChild(oldVKids[oldHead++].node);
+      }
+    } else {
+      for (var keyed = {}, newKeyed = {}, i = oldHead; i <= oldTail; i++) {
+        if ((oldKey = oldVKids[i].key) != null) {
+          keyed[oldKey] = oldVKids[i];
+        }
+      }
+      while (newHead <= newTail) {
+        oldKey = get_key(oldVKid = oldVKids[oldHead]);
+        newKey = get_key(newVKids[newHead] = vdomify(newVKids[newHead]));
+        if (newKeyed[oldKey] || newKey != null && newKey === get_key(oldVKids[oldHead +
+        1])) {
+          if (oldKey == null) {
+            node.removeChild(oldVKid.node);
+          }
+          oldHead++;
+          continue;
+        }
+        if (newKey == null || oldVNode.type === SSR_NODE) {
+          if (oldKey == null) {
+            patch_node(
+              node,
+              oldVKid && oldVKid.node,
+              oldVKid,
+              newVKids[newHead],
+              isSvg
+            );
+            newHead++;
+          }
+          oldHead++;
+        } else {
+          if (oldKey === newKey) {
+            patch_node(node, oldVKid.node, oldVKid, newVKids[newHead], isSvg);
+            newKeyed[newKey] = true;
+            oldHead++;
+          } else {
+            if ((tmpVKid = keyed[newKey]) != null) {
+              patch_node(
+                node,
+                node.insertBefore(tmpVKid.node, oldVKid && oldVKid.node),
+                tmpVKid,
+                newVKids[newHead],
+                isSvg
+              );
+              newKeyed[newKey] = true;
+            } else {
+              patch_node(
+                node,
+                oldVKid && oldVKid.node,
+                null,
+                newVKids[newHead],
+                isSvg
+              );
+            }
+          }
+          newHead++;
+        }
+      }
+      while (oldHead <= oldTail) {
+        if (get_key(oldVKid = oldVKids[oldHead++]) == null) {
+          node.removeChild(oldVKid.node);
+        }
+      }
+      for (var i in keyed) {
+        if (newKeyed[i] == null) {
+          node.removeChild(keyed[i].node);
+        }
+      }
+    }
+  }
+  return newVNode.node = node;
+};
+var vdomify = (newVNode) => newVNode !== true && newVNode !== false && newVNode ?
+newVNode : text("");
+var recycle_node = (node) => node.nodeType === TEXT_NODE ? text(node.nodeValue, node) :
+create_vnode(
+  node.nodeName.toLowerCase(),
+  EMPTY_OBJ2,
+  EMPTY_ARR2.map.call(node.childNodes, recycle_node),
+  SSR_NODE,
+  node
+);
+var create_vnode = (tag, props, children, type, node) => ({
+  tag,
+  props,
+  key: props.key,
+  children,
+  type,
+  node
+});
+var create_element = (tag, props, children = EMPTY_ARR2) => create_vnode(tag, props,
+Array.isArray(children) ? children : [children]);
+var text = (value, node) => create_vnode(value, EMPTY_OBJ2, EMPTY_ARR2, TEXT_NODE,
+node);
+var Fragment = (_, children) => children.flat();
+var h = (type, props, ...children) => typeof type === "function" ? type(props, children) :
+create_element(
+  type,
+  props || {},
+  children.flatMap(
+    (any) => typeof any === "string" || typeof any === "number" ? text(any) : any
+  )
+);
+var render_ctx = EMPTY_OBJ2;
+var render = (vdom, node, ctx = {}) => (render.ctx = ctx, (node = patch_node(
+  node.parentNode,
+  node,
+  node.vdom || recycle_node(node),
+  vdom
+)).vdom = vdom, render.ctx = EMPTY_OBJ2, node);
+
+// src/element.js
+Symbol.metadata ??= Symbol("metadata");
+var observed_attrs = /* @__PURE__ */ new Map();
+var global_sheets = null;
+var get_global_stylesheets = () => {
+  if (global_sheets === null) {
+    global_sheets = Array.from(document.styleSheets).map((x) => {
+      const sheet = new CSSStyleSheet();
+      const css3 = Array.from(x.cssRules).map((rule) => rule.cssText).join(" ");
+      sheet.replaceSync(css3);
+      return sheet;
+    });
+  }
+  return global_sheets;
+};
+var IS_DEV = true;
+var has_warned_dev = false;
+var Ivysaur = class extends HTMLElement {
+  /**
+  * @description The css for the element.
+  * @type { string | string[] }
+  */
+  static styles = "";
+  /**
+  * @description Whether to use global document styles.
+  */
+  static use_global_styles = false;
+  /**
+  * @description Define this element in the custom elements registry. Must contain a '-'.
+  * @param { string } name
+  */
+  static define_self(name) {
+    if (!customElements.get(name)) {
+      customElements.define(name, this);
+    }
+  }
+  static get observedAttributes() {
+    return Array.from(observed_attrs.get(this[Symbol.metadata]) ?? []);
+  }
+  /**
+  * @description A reactive map of observed attributes.
+  * @type { Record<string, string> }
+  */
+  observed_attributes = reactive({});
+  /**
+  * @description A reactive map of observed attributes.
+  * @type { Record<string, string> }
+  */
+  get observedAttributes() {
+    return this.observed_attributes;
+  }
+  /**
+  * @internal
+  * @param { string } name
+  * @param { string } oldValue
+  * @param { string } newValue
+  * @returns { void }
+  */
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue === newValue) return;
+    this.observedAttributes[name] = newValue;
+  }
+  /**
+  * @description Get an attribute from the element.
+  * @type { (name: string) => string | null }
+  */
+  get_attribute = this.getAttribute.bind(this);
+  /**
+  * @description Set an attribute on the element.
+  * @type { (name: string, value: string) => void }
+  */
+  set_attribute = this.setAttribute.bind(this);
+  /**
+  * @description Remove an attribute on the element.
+  * @type { (name: string) => void }
+  */
+  remove_attribute = this.removeAttribute.bind(this);
+  /**
+  * @description Called when the element is added to the dom, before rendering.
+  */
+  on_mount() {
+  }
+  /**
+  * @description Called when the element is added to the dom, before rendering.
+  */
+  onMount() {
+  }
+  /**
+  * @description Called when the element is added to the dom, after rendering.
+  */
+  on_mounted() {
+  }
+  /**
+  * @description Called when the element is added to the dom, after rendering.
+  */
+  onMounted() {
+  }
+  /**
+  * @description Called when the element is removed from the dom.
+  */
+  on_unmount() {
+  }
+  /**
+  * @description Called when the element is removed from the dom.
+  */
+  onUnmount() {
+  }
+  constructor() {
+    super();
+    if (typeof document === "undefined") return;
+    this.attachShadow({ mode: "open" });
+    let raw_styles = this.constructor.styles;
+    if (typeof raw_styles !== "string" && !Array.isArray(raw_styles)) {
+      this._log_error(
+        new Error("Static styles property must be a string or string array."),
+        "constructor"
+      );
+      this.raw_styles = [""];
+    }
+    if (!Array.isArray(raw_styles)) {
+      raw_styles = [raw_styles];
+    }
+    let sheets = raw_styles.map((x) => {
+      let sheet = new CSSStyleSheet();
+      sheet.replaceSync(x);
+      return sheet;
+    });
+    this.shadowRoot.adoptedStyleSheets = sheets;
+    if (this.constructor.useGlobalStyles || this.constructor.use_global_styles) {
+      try {
+        this.adoptedStyleSheets.push(
+          ...get_global_stylesheets()
+        );
+      } catch (e) {
+        this._log_error(e, "adding global stylesheets");
+      }
+    }
+    this.root_node = document.createElement("shadow-root");
+    this.shadowRoot.appendChild(this.root_node);
+    if (IS_DEV && !has_warned_dev) {
+      console.warn("Ivysaur is running in development mode. Call set_dev(false) \
+to disable this warning.");
+      has_warned_dev = true;
+    }
+  }
+  /**
+  * @description The render method for the element. Must return a VNode from h() or compiled JSX.
+  * @returns { import("./types").VNode }
+  */
+  render() {
+    IS_DEV && console.warn("No render method defined for", this.constructor.name);
+    return h(Fragment, {}, []);
+  }
+  /**
+  * @internal
+  */
+  connectedCallback() {
+    if (this._rootEffectScope?.active) {
+      this._rootEffectScope.stop();
+    }
+    this._rootEffectScope = effectScope();
+    this._rootEffectScope.run(() => {
+      try {
+        this.onMount?.();
+        this.on_mount?.();
+      } catch (e) {
+        this._log_error(e, "on mount");
+      }
+      effect(() => {
+        let result;
+        try {
+          result = this.render.call(this);
+        } catch (e) {
+          this._log_error(e, "render");
+        }
+        try {
+          render(h("shadow-root", {}, result), this.root_node, { host: this });
+        } catch (e) {
+          this._log_error(e, "dom update");
+        }
+      });
+      try {
+        this.onMounted?.();
+        this.on_mounted?.();
+      } catch (e) {
+        this._log_error(e, "on mounted");
+      }
+    });
+  }
+  /**
+  * @internal
+  */
+  disconnectedCallback() {
+    this._rootEffectScope.run(() => {
+      try {
+        this.onUnmount?.();
+        this.on_unmount?.();
+      } catch (e) {
+        this._log_error(e, "on unmount");
+      }
+    });
+    this._rootEffectScope.stop();
+  }
+  /**
+  * @protected
+  * @param { Error } e - The error to log & throw in dev.
+  * @param { string } method - The method that the error occurred in.
+  */
+  _log_error = (e, method) => {
+    console.error("Error in", method, "of", this.constructor.name, e);
+    if (IS_DEV) throw e;
+  };
+  /**
+  * @protected
+  * @type { ReturnType<import("./reactive").effectScope> }
+  */
+  _rootEffectScope;
+  /**
+  * @protected
+  * @type { Record<string, any> }
+  */
+  _reactive_states = reactive({});
+};
+var css = String.raw;
+function state() {
+  return function(_, { kind, name }) {
+    if (kind === "accessor") {
+      return {
+        get() {
+          return this._reactive_states[name];
+        },
+        set(val) {
+          this._reactive_states[name] = val;
+        },
+        init(initialValue) {
+          this._reactive_states ??= reactive({});
+          this._reactive_states[name] = initialValue;
+        }
+      };
+    } else {
+      throw new Error("Invalid decorator usage: @state only works on class acces\
+sors.");
+    }
+  };
+}
+
+// src/playground.tsx
+var _count_dec, _a, _init, _count;
+var test_comp = class extends (_a = Ivysaur, _count_dec = [state()], _a) {
+  constructor() {
+    super(...arguments);
+    __privateAdd(this, _count, __runInitializers(_init, 8, this, 0)), __runInitializers(
+    _init, 11, this);
+  }
+  on_mount() {
+    effect(() => {
+      console.log(this.count);
+    });
+  }
+  render() {
+    return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h("h1", null, "hell\
+o world"), /* @__PURE__ */ h("p", null, "hello world"), /* @__PURE__ */ h("butto\
+n", { onclick: () => this.count++ }, "click me"), /* @__PURE__ */ h("p", null, this.
+    count));
+  }
+};
+_init = __decoratorStart(_a);
+_count = new WeakMap();
+__decorateElement(_init, 4, "count", _count_dec, test_comp, _count);
+__decoratorMetadata(_init, test_comp);
+test_comp.define_self("test-root");
 /*! Bundled license information:
 
 @vue/shared/dist/shared.esm-bundler.js:
