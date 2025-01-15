@@ -1,17 +1,17 @@
 import * as dts from "dts-bundle-generator"
 import * as esbuild from "esbuild";
-import { writeFile } from "node:fs/promises";
+import * as fs from "node:fs/promises";
 
 const args = process.argv.slice(2)
 
-const VERSION = "1.0.0"
+const VERSION = "0.0.2"
 
 const name = (n) => `${n}@${VERSION}`
 
 esbuild.build({
   outdir: "dist",
   entryPoints: [
-    { in: "src/mod.ts", out: name("ivysaur") },
+    { in: "src/mod.js", out: name("ivysaur") },
     // { in: "src/playground.tsx", out: "playground" },
   ],
   loader: {
@@ -38,5 +38,5 @@ if (args.includes("types")) {
       },
     ]).join("\n")
 
-  await writeFile(`dist/${name("ivysaur")}.d.ts`, types)
+  await fs.writeFile(`dist/${name("ivysaur")}.d.ts`, types)
 }

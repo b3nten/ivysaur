@@ -1,81 +1,3 @@
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __knownSymbol = (name, symbol) => (symbol = Symbol[name]) ? symbol : Symbol.
-for("Symbol." + name);
-var __typeError = (msg) => {
-  throw TypeError(msg);
-};
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true,
-configurable: true, writable: true, value }) : obj[key] = value;
-var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
-var __decoratorStart = (base) => [, , , __create(base?.[__knownSymbol("metadata")] ??
-null)];
-var __decoratorStrings = ["class", "method", "getter", "setter", "accessor", "fi\
-eld", "value", "get", "set"];
-var __expectFn = (fn) => fn !== void 0 && typeof fn !== "function" ? __typeError(
-"Function expected") : fn;
-var __decoratorContext = (kind, name, done, metadata, fns) => ({ kind: __decoratorStrings[kind],
-name, metadata, addInitializer: (fn) => done._ ? __typeError("Already initialize\
-d") : fns.push(__expectFn(fn || null)) });
-var __decoratorMetadata = (array, target) => __defNormalProp(target, __knownSymbol(
-"metadata"), array[3]);
-var __runInitializers = (array, flags, self2, value) => {
-  for (var i = 0, fns = array[flags >> 1], n = fns && fns.length; i < n; i++) flags &
-  1 ? fns[i].call(self2) : value = fns[i].call(self2, value);
-  return value;
-};
-var __decorateElement = (array, flags, name, decorators, target, extra) => {
-  var fn, it, done, ctx, access, k = flags & 7, s = !!(flags & 8), p = !!(flags &
-  16);
-  var j = k > 3 ? array.length + 1 : k ? s ? 1 : 2 : 0, key = __decoratorStrings[k +
-  5];
-  var initializers = k > 3 && (array[j - 1] = []), extraInitializers = array[j] ||
-  (array[j] = []);
-  var desc = k && (!p && !s && (target = target.prototype), k < 5 && (k > 3 || !p) &&
-  __getOwnPropDesc(k < 4 ? target : { get [name]() {
-    return __privateGet(this, extra);
-  }, set [name](x) {
-    return __privateSet(this, extra, x);
-  } }, name));
-  k ? p && k < 4 && __name(extra, (k > 2 ? "set " : k > 1 ? "get " : "") + name) :
-  __name(target, name);
-  for (var i = decorators.length - 1; i >= 0; i--) {
-    ctx = __decoratorContext(k, name, done = {}, array[3], extraInitializers);
-    if (k) {
-      ctx.static = s, ctx.private = p, access = ctx.access = { has: p ? (x) => __privateIn(
-      target, x) : (x) => name in x };
-      if (k ^ 3) access.get = p ? (x) => (k ^ 1 ? __privateGet : __privateMethod)(
-      x, target, k ^ 4 ? extra : desc.get) : (x) => x[name];
-      if (k > 2) access.set = p ? (x, y) => __privateSet(x, target, y, k ^ 4 ? extra :
-      desc.set) : (x, y) => x[name] = y;
-    }
-    it = (0, decorators[i])(k ? k < 4 ? p ? extra : desc[key] : k > 4 ? void 0 :
-    { get: desc.get, set: desc.set } : target, ctx), done._ = 1;
-    if (k ^ 4 || it === void 0) __expectFn(it) && (k > 4 ? initializers.unshift(
-    it) : k ? p ? extra = it : desc[key] = it : target = it);
-    else if (typeof it !== "object" || it === null) __typeError("Object expected");
-    else __expectFn(fn = it.get) && (desc.get = fn), __expectFn(fn = it.set) && (desc.
-    set = fn), __expectFn(fn = it.init) && initializers.unshift(fn);
-  }
-  return k || __decoratorMetadata(array, target), desc && __defProp(target, name,
-  desc), p ? k ^ 4 ? extra : desc : target;
-};
-var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot\
- " + msg);
-var __privateIn = (member, obj) => Object(obj) !== obj ? __typeError('Cannot use\
- the "in" operator on this value') : member.has(obj);
-var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read fr\
-om private field"), getter ? getter.call(obj) : member.get(obj));
-var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot\
- add the same private member more than once") : member instanceof WeakSet ? member.
-add(obj) : member.set(obj, value);
-var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "\
-write to private field"), setter ? setter.call(obj, value) : member.set(obj, value),
-value);
-var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "acce\
-ss private method"), method);
-
 // node_modules/@vue/shared/dist/shared.esm-bundler.js
 // @__NO_SIDE_EFFECTS__
 function makeMap(str) {
@@ -1656,108 +1578,226 @@ var get_global_stylesheets = () => {
   if (global_sheets === null) {
     global_sheets = Array.from(document.styleSheets).map((x) => {
       const sheet = new CSSStyleSheet();
-      const css3 = Array.from(x.cssRules).map((rule) => rule.cssText).join(" ");
-      sheet.replaceSync(css3);
+      const css2 = Array.from(x.cssRules).map((rule) => rule.cssText).join(" ");
+      sheet.replaceSync(css2);
       return sheet;
     });
   }
   return global_sheets;
 };
 var IS_DEV = true;
+var set_dev = (val) => IS_DEV = val;
 var has_warned_dev = false;
 var Ivysaur = class extends HTMLElement {
   /**
-  * @description The css for the element.
-  * @type { string | string[] }
-  */
+   * @description The css for the element.
+   * @type { string | string[] }
+   */
   static styles = "";
   /**
-  * @description Whether to use global document styles.
-  */
+   * @description Whether to use global document styles.
+   */
   static use_global_styles = false;
   /**
-  * @description Define this element in the custom elements registry. Must contain a '-'.
-  * @param { string } name
-  */
+   * @description Whether to use global document styles.
+   */
+  static get useGlobalStyles() {
+    return this.use_global_styles;
+  }
+  static set useGlobalStyles(val) {
+    this.use_global_styles = val;
+  }
+  /**
+   * @description Whether to use light dom. This will disable component
+   * styles and the render function should no longer return vnodes.
+   */
+  static light_dom = false;
+  /**
+   * @description Whether to use light dom. This will disable component
+   * styles and the render function should no longer return vnodes.
+   */
+  static get lightDom() {
+    return this.light_dom;
+  }
+  static set lightDom(val) {
+    this.light_dom = val;
+  }
+  /**
+   * @description Define this element in the custom elements registry. Must contain a '-'.
+   * @param { string } name
+   */
   static define_self(name) {
     if (!customElements.get(name)) {
       customElements.define(name, this);
     }
   }
+  /**
+   * @description Define this element in the custom elements registry. Must contain a '-'.
+   * @param { string } name
+   */
+  static get defineSelf() {
+    return this.define_self;
+  }
   static get observedAttributes() {
     return Array.from(observed_attrs.get(this[Symbol.metadata]) ?? []);
   }
   /**
-  * @description A reactive map of observed attributes.
-  * @type { Record<string, string> }
-  */
+   * @description A reactive map of observed attributes.
+   * @readonly
+   * @type { Record<string, string> }
+   */
   observed_attributes = reactive({});
   /**
-  * @description A reactive map of observed attributes.
-  * @type { Record<string, string> }
-  */
+   * @description A reactive map of observed attributes.
+   * @type { Record<string, string> }
+   */
   get observedAttributes() {
     return this.observed_attributes;
   }
   /**
-  * @internal
-  * @param { string } name
-  * @param { string } oldValue
-  * @param { string } newValue
-  * @returns { void }
-  */
+   * @internal
+   * @param { string } name
+   * @param { string } oldValue
+   * @param { string } newValue
+   * @returns { void }
+   */
   attributeChangedCallback(name, oldValue, newValue) {
     if (oldValue === newValue) return;
     this.observedAttributes[name] = newValue;
   }
   /**
-  * @description Get an attribute from the element.
-  * @type { (name: string) => string | null }
-  */
+   * @description Get an attribute from the element.
+   * @type { (name: string) => string | null }
+   */
   get_attribute = this.getAttribute.bind(this);
   /**
-  * @description Set an attribute on the element.
-  * @type { (name: string, value: string) => void }
-  */
+   * @description Set an attribute on the element.
+   * @type { (name: string, value: string) => void }
+   */
   set_attribute = this.setAttribute.bind(this);
   /**
-  * @description Remove an attribute on the element.
-  * @type { (name: string) => void }
-  */
+   * @description Remove an attribute on the element.
+   * @type { (name: string) => void }
+   */
   remove_attribute = this.removeAttribute.bind(this);
   /**
-  * @description Called when the element is added to the dom, before rendering.
-  */
+   * @description Called when the element is added to the dom, before rendering.
+   */
   on_mount() {
   }
   /**
-  * @description Called when the element is added to the dom, before rendering.
-  */
+   * @description Called when the element is added to the dom, before rendering.
+   */
   onMount() {
   }
   /**
-  * @description Called when the element is added to the dom, after rendering.
-  */
+   * @description Called when the element is added to the dom, after rendering.
+   */
   on_mounted() {
   }
   /**
-  * @description Called when the element is added to the dom, after rendering.
-  */
+   * @description Called when the element is added to the dom, after rendering.
+   */
   onMounted() {
   }
   /**
-  * @description Called when the element is removed from the dom.
-  */
+   * @description Called when the element is removed from the dom.
+   */
   on_unmount() {
   }
   /**
-  * @description Called when the element is removed from the dom.
-  */
+   * @description Called when the element is removed from the dom.
+   */
   onUnmount() {
   }
   constructor() {
     super();
-    if (typeof document === "undefined") return;
+    if (typeof document !== "undefined" && !this.constructor.light_dom) {
+      this._construct_shadow_dom();
+    }
+    if (IS_DEV && !has_warned_dev) {
+      console.warn(
+        "Ivysaur is running in development mode. Call set_dev(false) to disable \
+this warning."
+      );
+      has_warned_dev = true;
+    }
+  }
+  /**
+   * @description The render method for the element. Must return a VNode from h() or compiled JSX.
+   * @returns { import("./types").VNode }
+   */
+  render() {
+    IS_DEV && !this.constructor.light_dom && console.warn("No render method defi\
+ned for", this.constructor.name);
+  }
+  /**
+   * @internal
+   */
+  connectedCallback() {
+    if (this._rootEffectScope?.active) {
+      this._rootEffectScope.stop();
+    }
+    this._rootEffectScope = effectScope();
+    this._rootEffectScope.run(() => {
+      try {
+        this.onMount?.();
+        this.on_mount?.();
+      } catch (e) {
+        this._log_error(e, "on mount");
+      }
+      effect(() => {
+        let result;
+        try {
+          result = this.render.call(this);
+        } catch (e) {
+          this._log_error(e, "render");
+        }
+        if (!this.constructor.light_dom && result) {
+          try {
+            render(h("shadow-root", {}, result), this.root_node, {
+              host: this
+            });
+          } catch (e) {
+            this._log_error(e, "dom update");
+          }
+        }
+      });
+      try {
+        this.onMounted?.();
+        this.on_mounted?.();
+      } catch (e) {
+        this._log_error(e, "on mounted");
+      }
+    });
+  }
+  /**
+   * @internal
+   */
+  disconnectedCallback() {
+    this._rootEffectScope.run(() => {
+      try {
+        this.onUnmount?.();
+        this.on_unmount?.();
+      } catch (e) {
+        this._log_error(e, "on unmount");
+      }
+    });
+    this._rootEffectScope.stop();
+  }
+  /**
+   * @protected
+   * @param { Error } e - The error to log & throw in dev.
+   * @param { string } method - The method that the error occurred in.
+   */
+  _log_error = (e, method) => {
+    console.error("Error in", method, "of", this.constructor.name, e);
+    if (IS_DEV) throw e;
+  };
+  /**
+   * @protected
+   */
+  _construct_shadow_dom() {
     this.attachShadow({ mode: "open" });
     let raw_styles = this.constructor.styles;
     if (typeof raw_styles !== "string" && !Array.isArray(raw_styles)) {
@@ -1778,97 +1818,23 @@ var Ivysaur = class extends HTMLElement {
     this.shadowRoot.adoptedStyleSheets = sheets;
     if (this.constructor.useGlobalStyles || this.constructor.use_global_styles) {
       try {
-        this.adoptedStyleSheets.push(
-          ...get_global_stylesheets()
-        );
+        this.adoptedStyleSheets.push(...get_global_stylesheets());
       } catch (e) {
         this._log_error(e, "adding global stylesheets");
       }
     }
     this.root_node = document.createElement("shadow-root");
     this.shadowRoot.appendChild(this.root_node);
-    if (IS_DEV && !has_warned_dev) {
-      console.warn("Ivysaur is running in development mode. Call set_dev(false) \
-to disable this warning.");
-      has_warned_dev = true;
-    }
   }
   /**
-  * @description The render method for the element. Must return a VNode from h() or compiled JSX.
-  * @returns { import("./types").VNode }
-  */
-  render() {
-    IS_DEV && console.warn("No render method defined for", this.constructor.name);
-    return h(Fragment, {}, []);
-  }
-  /**
-  * @internal
-  */
-  connectedCallback() {
-    if (this._rootEffectScope?.active) {
-      this._rootEffectScope.stop();
-    }
-    this._rootEffectScope = effectScope();
-    this._rootEffectScope.run(() => {
-      try {
-        this.onMount?.();
-        this.on_mount?.();
-      } catch (e) {
-        this._log_error(e, "on mount");
-      }
-      effect(() => {
-        let result;
-        try {
-          result = this.render.call(this);
-        } catch (e) {
-          this._log_error(e, "render");
-        }
-        try {
-          render(h("shadow-root", {}, result), this.root_node, { host: this });
-        } catch (e) {
-          this._log_error(e, "dom update");
-        }
-      });
-      try {
-        this.onMounted?.();
-        this.on_mounted?.();
-      } catch (e) {
-        this._log_error(e, "on mounted");
-      }
-    });
-  }
-  /**
-  * @internal
-  */
-  disconnectedCallback() {
-    this._rootEffectScope.run(() => {
-      try {
-        this.onUnmount?.();
-        this.on_unmount?.();
-      } catch (e) {
-        this._log_error(e, "on unmount");
-      }
-    });
-    this._rootEffectScope.stop();
-  }
-  /**
-  * @protected
-  * @param { Error } e - The error to log & throw in dev.
-  * @param { string } method - The method that the error occurred in.
-  */
-  _log_error = (e, method) => {
-    console.error("Error in", method, "of", this.constructor.name, e);
-    if (IS_DEV) throw e;
-  };
-  /**
-  * @protected
-  * @type { ReturnType<import("./reactive").effectScope> }
-  */
+   * @protected
+   * @type { ReturnType<import("./reactive").effectScope> }
+   */
   _rootEffectScope;
   /**
-  * @protected
-  * @type { Record<string, any> }
-  */
+   * @protected
+   * @type { Record<string, any> }
+   */
   _reactive_states = reactive({});
 };
 var css = String.raw;
@@ -1888,37 +1854,61 @@ function state() {
         }
       };
     } else {
-      throw new Error("Invalid decorator usage: @state only works on class acces\
-sors.");
+      throw new Error(
+        "Invalid decorator usage: @state only works on class accessors."
+      );
     }
   };
 }
-
-// src/playground.tsx
-var _count_dec, _a, _init, _count;
-var test_comp = class extends (_a = Ivysaur, _count_dec = [state()], _a) {
-  constructor() {
-    super(...arguments);
-    __privateAdd(this, _count, __runInitializers(_init, 8, this, 0)), __runInitializers(
-    _init, 11, this);
-  }
-  on_mount() {
-    effect(() => {
-      console.log(this.count);
-    });
-  }
-  render() {
-    return /* @__PURE__ */ h(Fragment, null, /* @__PURE__ */ h("h1", null, "hell\
-o world"), /* @__PURE__ */ h("p", null, "hello world"), /* @__PURE__ */ h("butto\
-n", { onclick: () => this.count++ }, "click me"), /* @__PURE__ */ h("p", null, this.
-    count));
-  }
+var default_attr_converter = (val) => val;
+function attribute(overriddenName, options = {}) {
+  return function(value, { kind, name, metadata }) {
+    let attrName = overriddenName ?? name;
+    let converter = options.converter ?? default_attr_converter;
+    if (!observed_attrs.has(metadata)) observed_attrs.set(metadata, /* @__PURE__ */ new Set());
+    observed_attrs.get(metadata).add(attrName);
+    if (kind === "accessor") {
+      return {
+        get() {
+          return converter(this.observed_attributes[attrName]);
+        },
+        set(val) {
+          this.observed_attributes[attrName] = val;
+          this.setAttribute(attrName, String(val));
+        },
+        init(initialValue) {
+          this.observed_attributes[attrName] = initialValue;
+        }
+      };
+    } else if (kind === "getter") {
+      return function() {
+        let val = this.observed_attributes[attrName];
+        return typeof val !== "undefined" ? converter(val) : value();
+      };
+    } else {
+      throw new Error(
+        "Invalid decorator usage: @attribute only works on class accessors and g\
+etters."
+      );
+    }
+  };
+}
+export {
+  Fragment,
+  IS_DEV,
+  Ivysaur,
+  attribute,
+  css,
+  effect,
+  effectScope,
+  h,
+  Ivysaur as ivysaur,
+  reactive,
+  render,
+  set_dev as setDev,
+  set_dev,
+  state
 };
-_init = __decoratorStart(_a);
-_count = new WeakMap();
-__decorateElement(_init, 4, "count", _count_dec, test_comp, _count);
-__decoratorMetadata(_init, test_comp);
-test_comp.define_self("test-root");
 /*! Bundled license information:
 
 @vue/shared/dist/shared.esm-bundler.js:

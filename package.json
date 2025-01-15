@@ -1,6 +1,6 @@
 {
   "name": "ivysaur",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "A simple 0 dependency reactive custom element library with JSX support.",
   "type": "module",
   "scripts": {
@@ -14,5 +14,14 @@
     "esbuild": "^0.24.2",
     "typescript": "^5.7.2",
     "alien-signals": "^1.0.0"
+  },
+  "include": [
+    "dist/*"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/ivysaur@0.0.2.js",
+      "types": "./dist/ivysaur@0.0.2.d.ts"
+    }
   }
 }
