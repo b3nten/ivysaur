@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "allowJs": true,
+    "lib": ["ES2022", "DOM"],
+    "outDir": "dist",
+
+  }
+}
