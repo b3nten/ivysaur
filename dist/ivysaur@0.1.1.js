@@ -1944,7 +1944,8 @@ function attribute(overriddenName, options = {}) {
       return {
         get() {
           let val = this.observed_attributes[attrName];
-          return val === null ? first_val : val === "" ? true : converter(val);
+          return val === null || val === void 0 ? first_val : val === "" ? true :
+          converter(val);
         },
         set(val) {
           this.observed_attributes[attrName] = val;
@@ -1966,7 +1967,8 @@ function attribute(overriddenName, options = {}) {
     } else if (kind === "getter") {
       return function() {
         let val = this.observed_attributes[attrName];
-        return val === null ? value() : val === "" ? true : converter(val);
+        return val === null || val === void 0 ? value() : val === "" ? true : converter(
+        val);
       };
     } else {
       throw new Error(

@@ -4,7 +4,7 @@ import * as fs from "node:fs/promises";
 
 const args = process.argv.slice(2)
 
-const VERSION = "0.1.0"
+const VERSION = "0.1.1"
 
 const name = (n) => `${n}@${VERSION}`
 

@@ -401,7 +401,7 @@ function attribute(overriddenName, options = {}) {
       return {
         get() {
           let val = this.observed_attributes[attrName];
-          return val === null ? first_val
+          return (val === null || val === undefined) ? first_val
           : val === "" ? true
           : converter(val);
         },
@@ -425,7 +425,7 @@ function attribute(overriddenName, options = {}) {
     } else if (kind === "getter") {
       return function () {
         let val = this.observed_attributes[attrName];
-        return val === null ? value()
+        return (val === null || val === undefined) ? value()
         : val === "" ? true
         : converter(val);
       };
