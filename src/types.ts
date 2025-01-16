@@ -4,7 +4,7 @@ export declare type HFunction = (tag: string, props: Record<string, any> | VNode
 
 export declare type TextFunction = (value: string | number) => VNode;
 
-export declare type Fragment = (props: Record<string, any>, ...children: any[]) => VNode;
+export declare type FragmentFunction = (props: Record<string, any>, ...children: any[]) => VNode;
 
 export declare type RenderFunction = (vnode: VNode, container: Element ) => void;
 

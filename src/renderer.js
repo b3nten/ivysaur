@@ -295,7 +295,7 @@ let text = (value, node) =>
   create_vnode(value, EMPTY_OBJ, EMPTY_ARR, TEXT_NODE, node);
 
 /**
-* @type { import("./types").Fragment }
+* @type { import("./types").FragmentFunction }
 */
 let Fragment = (_, children) => children.flat();
 
