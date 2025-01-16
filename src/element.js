@@ -1,4 +1,4 @@
-import { effect, reactive, effectScope } from "./reactive.js";
+import { effect, reactive, effectScope, onEffectCleanup } from "./reactive.js";
 import { h, render, Fragment } from "./renderer.js";
 
 export {
@@ -161,6 +161,18 @@ class Ivysaur extends HTMLElement {
    * @type { (name: string) => void }
    */
   remove_attribute = this.removeAttribute.bind(this);
+
+  /**
+    * @description Add an event listener to the element.
+    * @type { (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => void }
+  */
+  add_event_listener = this.addEventListener.bind(this);
+
+  /**
+    * @description Remove an event listener from the element.
+    * @type { (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => void }
+  */
+  remove_event_listener = this.removeEventListener.bind(this);
 
   /**
    * @description Called when the element is added to the dom, before rendering.

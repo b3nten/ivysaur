@@ -74,6 +74,16 @@ export class Ivysaur extends HTMLElement {
      */
     remove_attribute: (name: string) => void;
     /**
+      * @description Add an event listener to the element.
+      * @type { (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => void }
+    */
+    add_event_listener: (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => void;
+    /**
+      * @description Remove an event listener from the element.
+      * @type { (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => void }
+    */
+    remove_event_listener: (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) => void;
+    /**
      * @description Called when the element is added to the dom, before rendering.
      */
     on_mount(): void;
