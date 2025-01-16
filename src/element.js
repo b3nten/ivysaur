@@ -397,22 +397,37 @@ function attribute(overriddenName, options = {}) {
     observed_attrs.get(metadata).add(attrName);
 
     if (kind === "accessor") {
+      let first_val;
       return {
         get() {
-          return converter(this.observed_attributes[attrName]);
+          let val = this.observed_attributes[attrName];
+          return val === null ? first_val
+          : val === "" ? true
+          : converter(val);
         },
         set(val) {
           this.observed_attributes[attrName] = val;
-          this.setAttribute(attrName, String(val));
+          if (!val) {
+            this.removeAttribute(attrName);
+          } else {
+            this.setAttribute(attrName,
+              typeof val === "object" ? JSON.stringify(val)
+              : typeof val === true ? ""
+              : String(val)
+            );
+          }
         },
         init(initialValue) {
+          first_val = initialValue;
           this.observed_attributes[attrName] = initialValue;
         },
       };
     } else if (kind === "getter") {
       return function () {
         let val = this.observed_attributes[attrName];
-        return typeof val !== "undefined" ? converter(val) : value();
+        return val === null ? value()
+        : val === "" ? true
+        : converter(val);
       };
     } else {
       throw new Error(
