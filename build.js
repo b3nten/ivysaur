@@ -4,7 +4,7 @@ import * as fs from "node:fs/promises";
 
 const args = process.argv.slice(2)
 
-const VERSION = "0.0.3"
+const VERSION = "0.0.4"
 
 const name = (n) => `${n}@${VERSION}`
 
@@ -33,7 +33,7 @@ if (args.includes("types")) {
       {
         filePath: "dist/mod.d.ts",
         libraries: {
-          inlinedLibraries: ["@vue/reactivity"],
+          inlinedLibraries: ["@vue/reactivity", "@vue/shared"],
         },
       },
     ]).join("\n")
