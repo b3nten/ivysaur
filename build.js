@@ -4,7 +4,7 @@ import * as fs from "node:fs/promises";
 
 const args = process.argv.slice(2)
 
-const VERSION = "0.1.1"
+const VERSION = "0.2.0"
 
 const name = (n) => `${n}@${VERSION}`
 
@@ -12,7 +12,7 @@ esbuild.build({
   outdir: "dist",
   entryPoints: [
     { in: "src/mod.js", out: name("ivysaur") },
-    // { in: "src/playground.tsx", out: "playground" },
+    { in: "src/playground.tsx", out: "playground" },
   ],
   loader: {
     ".tsx": "tsx",

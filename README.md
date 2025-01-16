@@ -14,8 +14,10 @@
 
 # Overview
 
-Ivysaur is a reactive custom element library that aims to provide a simple and efficient way to create custom elements with reactive data bindings.
-It supports JSX via it's `h` and `Fragment` functions, and uses a reactive data store to manage state and reactivity.
+Ivysaur is a reactive custom element library that aims to provide a simple and
+efficient way to create custom elements with reactive data bindings. It supports
+JSX via it's `h` and `Fragment` functions, and uses a reactive data store to
+manage state and reactivity.
 
 ```typescript
 /*
@@ -106,7 +108,9 @@ class CustomElement extends Ivysaur {
     }
 
     return (
-      <div>
+      // All components must use <host/> as root element.
+      // This can be used to bind attributes to the custom element.
+      <host data-foo="bar">
         <Counter factor={2}>Increment by 2: {this.count}</Counter>
         {/*
           The attr: and prop: prefixes are used to bind values to an element's
@@ -122,15 +126,18 @@ class CustomElement extends Ivysaur {
 
 // Define the custom element in the global registry.
 CustomElement.defineSelf("custom-element")
+```
 
-/*
+#### Light Dom
+
   By default Ivysaur components use the shadow dom. If you
   want to take advantage of the lifecycle and reactivity of
   Ivysaur with the light dom, you can toggle the lightDom
   static property to true. This disables styles and JSX rendering.
   Instead the render function can be used to imperatively create
   and modify dom nodes.
-*/
+
+```typescript
 class LightDomElement extends Ivysaur {
 
   static lightDom = true;

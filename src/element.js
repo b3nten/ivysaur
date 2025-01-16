@@ -253,7 +253,7 @@ class Ivysaur extends HTMLElement {
         }
         if (!this.constructor.light_dom && result) {
           try {
-            render(h("shadow-root", {}, result), this.root_node, {
+            render(result, this.shadowRoot, {
               host: this,
             });
           } catch (e) {
