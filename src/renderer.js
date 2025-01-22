@@ -25,8 +25,9 @@ let patch_property = (node, key, oldValue, newValue, isSvg) => {
     if (!newValue && oldValue) node.removeEventListener(key, event_delegate);
     if (!oldValue && newValue) node.addEventListener(key, event_delegate);
     if (oldValue !== newValue) {
+      let host = render_ctx.host ?? node;
       node._vevents[key] = newValue
-        ? (e) => newValue.call(render_ctx.host ?? node, e)
+        ? (e) => newValue.call(host, e)
         : null;
     }
   } else if (key === "ref") {
