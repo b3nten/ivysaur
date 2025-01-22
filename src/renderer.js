@@ -319,13 +319,13 @@ let render_ctx = EMPTY_OBJ;
 * @type { import("./types").RenderFunction }
 */
 let render = (vdom, node, ctx = {}) => (
-  (render.ctx = ctx),
+  (render_ctx = ctx),
   ((node = patch_node(
     node.parentNode,
     node,
     node.vdom || recycle_node(node),
     vdom,
   )).vdom = vdom),
-  (render.ctx = EMPTY_OBJ),
+  (render_ctx = EMPTY_OBJ),
   node
 );

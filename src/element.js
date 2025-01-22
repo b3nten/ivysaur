@@ -68,16 +68,7 @@ class Ivysaur extends HTMLElement {
    * @description Whether to use global document styles.
    */
   static use_global_styles = false;
-
-  /**
-   * @description Whether to use global document styles.
-   */
-  static get useGlobalStyles() {
-    return this.use_global_styles;
-  }
-  static set useGlobalStyles(val) {
-    this.use_global_styles = val;
-  }
+  static useGlobalStyles = false;
 
   /**
    * @description Whether to use light dom. This will disable component
@@ -327,7 +318,7 @@ class Ivysaur extends HTMLElement {
       this.constructor.use_global_styles
     ) {
       try {
-        this.adoptedStyleSheets.push(...get_global_stylesheets());
+        this.shadowRoot.adoptedStyleSheets.push(...get_global_stylesheets());
       } catch (e) {
         this._log_error(e, "adding global stylesheets");
       }
