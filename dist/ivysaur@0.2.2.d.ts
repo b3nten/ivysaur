@@ -208,11 +208,7 @@ export class Ivysaur extends HTMLElement {
 	 * @description Whether to use global document styles.
 	 */
 	static use_global_styles: boolean;
-	static set useGlobalStyles(val: boolean);
-	/**
-	 * @description Whether to use global document styles.
-	 */
-	static get useGlobalStyles(): boolean;
+	static useGlobalStyles: boolean;
 	/**
 	 * @description Whether to use light dom. This will disable component
 	 * styles and the render function should no longer return vnodes.

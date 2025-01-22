@@ -1635,12 +1635,12 @@ create_element(
   )
 );
 var render_ctx = EMPTY_OBJ2;
-var render = (vdom, node, ctx = {}) => (render.ctx = ctx, (node = patch_node(
+var render = (vdom, node, ctx = {}) => (render_ctx = ctx, (node = patch_node(
   node.parentNode,
   node,
   node.vdom || recycle_node(node),
   vdom
-)).vdom = vdom, render.ctx = EMPTY_OBJ2, node);
+)).vdom = vdom, render_ctx = EMPTY_OBJ2, node);
 
 // src/element.js
 Symbol.metadata ??= Symbol("metadata");
@@ -1670,15 +1670,7 @@ var Ivysaur = class extends HTMLElement {
    * @description Whether to use global document styles.
    */
   static use_global_styles = false;
-  /**
-   * @description Whether to use global document styles.
-   */
-  static get useGlobalStyles() {
-    return this.use_global_styles;
-  }
-  static set useGlobalStyles(val) {
-    this.use_global_styles = val;
-  }
+  static useGlobalStyles = false;
   /**
    * @description Whether to use light dom. This will disable component
    * styles and the render function should no longer return vnodes.
@@ -1900,7 +1892,7 @@ ned for", this.constructor.name);
     this.shadowRoot.adoptedStyleSheets = sheets;
     if (this.constructor.useGlobalStyles || this.constructor.use_global_styles) {
       try {
-        this.adoptedStyleSheets.push(...get_global_stylesheets());
+        this.shadowRoot.adoptedStyleSheets.push(...get_global_stylesheets());
       } catch (e) {
         this._log_error(e, "adding global stylesheets");
       }
